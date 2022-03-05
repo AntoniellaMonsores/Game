@@ -7,7 +7,7 @@ Permitir a visualização e armazenamento de informações referentes a diferent
 Conceder informações referentes ao jogo: 
 - Nome;
 - Gênero;
-- Níveis;
+- Níveis.
 
 Conceder informações referentes ao player (jogador): 
 - Id/apelido: nome de usuário; 
