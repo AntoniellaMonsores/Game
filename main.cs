@@ -4,23 +4,19 @@ class Program {
 
     public static void Main(string[] args)
     {
-        Game a = new Game("a", "ação", 3);
-        Game b = new Game("b", "ação", 2);
-        Game c = new Game("c", "ação", 1);
-        Game d = new Game("d", "ação", 2);
-        Game e = new Game("e", "ação", 5);
-        Game f = new Game("f", "ação", 2);
-        Game g = new Game("g", "ação", 2);
-        
-        Sistema.GameInserir(a);
-        Sistema.GameInserir(b);
-        Sistema.GameInserir(c);
-        Sistema.GameInserir(d);
-        Sistema.GameInserir(e);
-        Sistema.GameInserir(f);
-        Sistema.GameInserir(g);
+        Player a = new Player(20, "a", "ana", "ana@gmail.com");
+        Player b = new Player(17, "b", "bia", "bia@gmail.com");
+        Player c = new Player(25, "m", "mia", "mia@gmail.com");
+        Player d = new Player(18, "d", "diego", "diego@gmail.com");
 
-        foreach (Game obj in Sistema.GameListar()) 
-            Console.WriteLine(obj);
+        Sistema.PlayerInserir(a);
+        Sistema.PlayerInserir(b);
+        Sistema.PlayerInserir(c);
+        Sistema.PlayerInserir(d);
+        
+        Sistema.PlayerExcluir(d);
+
+        foreach (Player p in Sistema.PlayerListar())
+            Console.WriteLine(p);
     }
 }
