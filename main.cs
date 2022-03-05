@@ -19,13 +19,8 @@ class Program {
         Sistema.GameInserir(e);
         Sistema.GameInserir(f);
         Sistema.GameInserir(g);
-            
-        Console.WriteLine(a);
-        Console.WriteLine(b);
-        Console.WriteLine(c);
-        Console.WriteLine(d);
-        Console.WriteLine(e);
-        Console.WriteLine(f);
-        Console.WriteLine(g);
+
+        foreach (Game obj in Sistema.GameListar()) 
+            Console.WriteLine(obj);
     }
 }
