@@ -10,7 +10,7 @@ Conceder informações referentes ao jogo:
 - Níveis;
 
 Conceder informações referentes ao player (jogador): 
-- Id/apelido: nome de usuário; 
+- Id/apelido;
 - Nome real;
 - Email;
 - Idade.
