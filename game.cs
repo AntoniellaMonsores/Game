@@ -25,13 +25,19 @@ class Game {
         this.niveis = niveis;
     }
     
-    public string GetNome() { return nome; }
+    public string GetNome() { 
+        return nome; 
+    }
 
-    public string GetGenero() { return genero; }
+    public string GetGenero() { 
+        return genero; 
+    }
     
-    public int GetNiveis() { return niveis; }
+    public int GetNiveis() { 
+        return niveis; 
+    }
     
     public override string ToString() {
-        return $"{nome} - {genero} - {niveis}";
+        return $"{nome} - {genero}";
     }
 }

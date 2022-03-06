@@ -48,6 +48,6 @@ class Player {
     }
 
     public override string ToString() {
-        return $"{id} - {nome} - {email} - {idade}";
+        return $"{id} - {email}";
     }
 }
