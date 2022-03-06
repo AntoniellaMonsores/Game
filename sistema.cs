@@ -21,12 +21,21 @@ class Sistema {
         games[nGames++] = obj;
     }
 
-    /*public _ GameExcluir()
+    public static void GameExcluir(int idGame)
     {
-        
+        // Exclusão de um elemento do array "games" por seu índice
+        // Deslocamento dos elementos do array
+        // Redefinição do tamanho do array
+
+        for (int i = idGame; i < games.Length - 1; i++) 
+        {
+            games[i] = games[i + 1];
+        }
+
+        Array.Resize(ref games, nGames--);
     }
-    
-    public _ GameAtualizar()
+
+    /*public _ GameAtualizar()
     {
         
     }*/
@@ -45,13 +54,13 @@ class Sistema {
 
     public static void PlayerInserir(Player obj)
     {
-        // Inserção do obj na lista
+        // Inserção do obj na lista de jogadores
         players.Add(obj);
     }
 
     public static void PlayerExcluir(Player obj)
     {
-        // Exclusão de um obj da lista "players"
+        // Exclusão de um obj da lista de jogadores
         players.Remove(obj);
     }
 
@@ -63,7 +72,7 @@ class Sistema {
 
     public static List<Player> PlayerListar()
     {
-        // Retorno dos objetos da lista "players"
+        // Retorno dos elementos da lista de jogadores
         return players;
     }
 }
