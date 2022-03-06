@@ -4,19 +4,19 @@ class Program {
 
     public static void Main(string[] args)
     {
-        Player a = new Player(20, "a", "ana", "ana@gmail.com");
-        Player b = new Player(17, "b", "bia", "bia@gmail.com");
-        Player c = new Player(25, "m", "mia", "mia@gmail.com");
-        Player d = new Player(18, "d", "diego", "diego@gmail.com");
+        Game a = new Game("a", "abc", 5);
+        Game b = new Game("b", "abc", 7);
+        Game c = new Game("c", "abc", 3);
+        Game d = new Game("d", "abc", 8);
 
-        Sistema.PlayerInserir(a);
-        Sistema.PlayerInserir(b);
-        Sistema.PlayerInserir(c);
-        Sistema.PlayerInserir(d);
-        
-        Sistema.PlayerExcluir(d);
+        Sistema.GameInserir(a);
+        Sistema.GameInserir(b);
+        Sistema.GameInserir(c);
+        Sistema.GameInserir(d);
 
-        foreach (Player p in Sistema.PlayerListar())
-            Console.WriteLine(p);
+        Sistema.GameExcluir(2);
+
+        foreach (Game g in Sistema.GameListar())
+            Console.WriteLine(g);
     }
 }
