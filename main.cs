@@ -213,4 +213,18 @@ class Program {
             Console.WriteLine($"{score[i]}");
     }
 
+    public static void ExcluirGame()
+    {
+        
+    }
+
+    public static void ExcluirUser()
+    {
+        
+    }
+
+    public static void ExcluirScore()
+    {
+
+    }
 }
