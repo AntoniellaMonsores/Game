@@ -36,7 +36,7 @@ class Score {
     public void SetData(DateTime data) {
         this.data = data;
     }
-
+    
     public int GetNivel() {
         return nivel;
     }
