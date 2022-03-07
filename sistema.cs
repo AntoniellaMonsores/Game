@@ -97,7 +97,6 @@ class Sistema {
     {
         // O ScoreListar recebe dois argumentos: idGame e idUser
         // Score não possui o método GetId
-        // Acho que o outro erro que estou recebendo agora é porque o retorno de ScoreListar é uma lista e não um único elemento
         
         Score aux = ScoreListar(obj.GetGameId(), obj.GetUserId());
         if (aux != null) {
