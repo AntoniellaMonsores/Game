@@ -2,25 +2,31 @@ using System;
 
 class Player {
 
+    private int id;
     private int idade;
-    private string id;
+    private string apelido;
     private string nome;
     private string email;
 
-    public Player(int idade, string id, string nome, string email)
+    public Player(int id, int idade, string apelido, string nome, string email)
     {
-        this.idade = idade;
         this.id = id;
+        this.idade = idade;
+        this.apelido = apelido;
         this.nome = nome;
         this.email = email;
     }
-
+    
+    public void SetId(int id) {
+        this.id = id;
+    }
+    
     public void SetIdade(int idade) {
         this.idade = idade;
     }
 
-    public void SetId(string id) {
-        this.id = id;
+    public void SetApelido(string apelido) {
+        this.apelido = apelido;
     }
 
     public void SetNome(string nome) {
@@ -30,13 +36,17 @@ class Player {
     public void SetEmail(string email) {
         this.email = email;
     }
-
+    
+    public int GetId() {
+        return id;
+    }
+    
     public int GetIdade() {
         return idade;
     }
 
-    public string GetId() {
-        return id;
+    public string GetApelido() {
+        return apelido;
     }
 
     public string GetNome() {
@@ -48,6 +58,6 @@ class Player {
     }
 
     public override string ToString() {
-        return $"{id} - {email}";
+        return $"{id:0000} - {apelido} - {email}";
     }
 }
