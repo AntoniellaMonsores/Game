@@ -35,12 +35,21 @@ class Sistema {
 
         Array.Resize(ref games, nGames--);
     }
-
-    /*public _ GameAtualizar()
+    
+    public static void GameAtualizar(Game obj)
     {
-        
-    }*/
-
+    // fazer isso aqui: public static void GameAtualizar(int id, Game obj)
+    // ou criar um GetId para a classe Game
+    // localizar
+      Game aux = GameListar(obj.GetId());
+      if (aux != null)
+      {
+        aux.SetNome(obj.GetNome());
+        aux.SetGenero(obj.GetGenero());
+        aux.SetNiveis(obj.GetNiveis());
+      }
+    }
+    
     public static Game[] GameListar()
     {
         // Retorno de todos os elementos presentes no array "games"
@@ -53,15 +62,17 @@ class Sistema {
         return aux;
     }
 
-    /*
-    public static Game GameListar()
+    public static Game GameListar(int id)
     {
-
-    }*/
+        // Retorno de um elemento específico da lista de jogos
+        
+        return games[id];
+    }
 
     public static void PlayerInserir(Player obj)
     {
         // Inserção do obj na lista de jogadores
+        
         players.Add(obj);
     }
 
@@ -85,12 +96,6 @@ class Sistema {
         
         return players;
     }
-
-    /*
-    public static Player PlayerListar()
-    {
-
-    }*/
 
     public static void ScoreInserir(Score obj)
     {
