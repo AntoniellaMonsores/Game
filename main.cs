@@ -64,6 +64,7 @@ class Program {
         Console.WriteLine("00 - Lembrar jogos cadastrados");
         Console.WriteLine("01 - Lembrar jogadores cadastrados");
         Console.WriteLine("02 - Continuar");
+        Console.WriteLine();
         
         return int.Parse(Console.ReadLine());
     }
@@ -215,16 +216,72 @@ class Program {
 
     public static void ExcluirGame()
     {
+        int func; 
+        int id;
         
+        do 
+        {
+            Console.WriteLine();
+            Console.WriteLine("00 - Lembrar jogos cadastrados");
+            Console.WriteLine("01 - Continuar");
+            Console.WriteLine();
+            
+            func = int.Parse(Console.ReadLine());
+            
+            switch (func) {
+                case 0 : ListarGames(); 
+                    break;
+            }
+        }
+
+        while (func != 1);
+        
+        func = int.Parse(ConsoleReadLine());
+        
+        Console.WriteLine();
+        Console.Write("Id do jogo: ");
+        
+        id = int.Parse(ConsoleReadLine());
+
+        Game obj = new Game(id, 0, "", "");
+        Sistema.GameExcluir(obj);
     }
 
     public static void ExcluirUser()
     {
+        int func; 
+        int id;
         
+        do 
+        {
+            Console.WriteLine();
+            Console.WriteLine("00 - Lembrar jogadores cadastrados");
+            Console.WriteLine("01 - Continuar");
+            Console.WriteLine();
+            
+            func = int.Parse(Console.ReadLine());
+            
+            switch (func) {
+                case 0 : ListarGames(); 
+                    break;
+            }
+        }
+
+        while (func != 1);
+        
+        func = int.Parse(ConsoleReadLine());
+        
+        Console.WriteLine();
+        Console.Write("Id do jogador: ");
+        
+        id = int.Parse(ConsoleReadLine());
+
+        Player obj = new Player(id, 0, "", "", "");
+        Sistema.PlayerExcluir(obj);
     }
 
     public static void ExcluirScore()
     {
-
+ 
     }
 }
