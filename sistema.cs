@@ -53,6 +53,12 @@ class Sistema {
         return aux;
     }
 
+    /*
+    public static Game GameListar()
+    {
+
+    }*/
+
     public static void PlayerInserir(Player obj)
     {
         // Inserção do obj na lista de jogadores
@@ -76,12 +82,20 @@ class Sistema {
     public static List<Player> PlayerListar()
     {
         // Retorno dos elementos da lista de jogadores
+        
         return players;
     }
+
+    /*
+    public static Player PlayerListar()
+    {
+
+    }*/
 
     public static void ScoreInserir(Score obj)
     {
         // Inserção do obj na lista de jogadores
+        
         score.Add(obj);
     }
 
@@ -93,24 +107,26 @@ class Sistema {
         score.RemoveAt(idScore);
     }
 
-     public static void ScoreAtualizar(Score obj)
+    public static void ScoreAtualizar(int id, Score obj)
     {
-        // O ScoreListar recebe dois argumentos: idGame e idUser
-        // Score não possui o método GetId
+        // Atualização de informações referentes à pontuação
+        // O método recebe o id (índice) do score e o objeto em si
+ 
+        Score aux = ScoreListar(obj.GetGameId(), obj.GetUserId())[id];
         
-        Score aux = ScoreListar(obj.GetGameId(), obj.GetUserId());
-        if (aux != null) {
-        aux.SetNivel(obj.GetNivel());
-        aux.SetGameId(obj.GetGameId());
-        aux.SetUserId(obj.GetUserId());
-        aux.SetPontos(obj.GetPontos());
-        aux.SetData(obj.GetData());
-      }
+        if (aux != null) 
+        {
+            aux.SetNivel(obj.GetNivel());
+            aux.SetGameId(obj.GetGameId());
+            aux.SetUserId(obj.GetUserId());
+            aux.SetPontos(obj.GetPontos());
+            aux.SetData(obj.GetData());
+        }
     }
 
     public static List<Score> ScoreListar(int idGame, int idUser)
     {
-        // Retorno dos elementos da lista de jogadores
+        // Retorno dos elementos da lista de pontos
         // Criação de uma lista auxiliar
         // Retorno apenas da pontuação referente ao jogo e jogador informado
 
@@ -123,5 +139,17 @@ class Sistema {
         }
         
         return aux;
+    }
+
+    public static Score ScoreListar(int id, int idGame, int idUser)
+    {
+        // Retorno de um elemento específico da lista de pontos
+        // Cada pontuação está associada a um jogo e jogador específicos
+        
+        Score obj = ScoreListar(idGame, idUser)[id];
+
+        if (obj != null) return obj;
+
+        return null;
     }
 }
