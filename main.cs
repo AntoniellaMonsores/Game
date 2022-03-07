@@ -27,6 +27,12 @@ class Program {
                     break;
                 case 6 : ListarScore();
                     break;
+                case 7 : ExcluirGame();
+                    break;
+                case 8 : ExcluirUser();
+                    break;
+                case 9 : ExcluirScore();
+                    break;
             }
         }
 
@@ -43,9 +49,22 @@ class Program {
         Console.WriteLine("04 - Visualizar jogos cadastrados");
         Console.WriteLine("05 - Visualizar jogadores cadastrados");
         Console.WriteLine("06 - Visualizar pontuação");
+        Console.WriteLine("07 - Excluir jogo");
+        Console.WriteLine("08 - Excluir jogador");
+        Console.WriteLine("09 - Excluir pontuação");
         Console.WriteLine("00 - Sair do sistema");
         Console.WriteLine();
 
+        return int.Parse(Console.ReadLine());
+    }
+
+    public static int MenuSecundario()
+    {
+        Console.WriteLine();
+        Console.WriteLine("00 - Lembrar jogos cadastrados");
+        Console.WriteLine("01 - Lembrar jogadores cadastrados");
+        Console.WriteLine("02 - Continuar");
+        
         return int.Parse(Console.ReadLine());
     }
     
@@ -102,12 +121,7 @@ class Program {
         
         do 
         {
-            Console.WriteLine();
-            Console.WriteLine("00 - Lembrar jogos cadastrados");
-            Console.WriteLine("01 - Lembrar jogadores cadastrados");
-            Console.WriteLine("02 - Cadastrar pontuação");
-        
-            func = int.Parse(Console.ReadLine());
+            func = MenuSecundario();
             
             switch (func) {
                 case 0 : ListarGames(); 
@@ -171,12 +185,7 @@ class Program {
         
         do 
         {
-            Console.WriteLine();
-            Console.WriteLine("00 - Lembrar jogos cadastrados");
-            Console.WriteLine("01 - Lembrar jogadores cadastrados");
-            Console.WriteLine("02 - Vizualizar pontuações");
-
-            func = int.Parse(Console.ReadLine());
+            func = MenuSecundario();
             
             switch (func) {
                 case 0 : ListarGames(); 
@@ -203,4 +212,5 @@ class Program {
         for (int i = 0; i < score.Count; i++)
             Console.WriteLine($"{score[i]}");
     }
+
 }
