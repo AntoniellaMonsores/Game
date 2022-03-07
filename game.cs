@@ -48,6 +48,6 @@ class Game {
     }
     
     public override string ToString() {
-        return $"{id} - {nome} - {genero}";
+        return $"{id:0000} - {nome} - {genero}";
     }
 }
