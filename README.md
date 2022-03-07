@@ -5,17 +5,21 @@ Permitir a visualização e armazenamento de informações referentes a diferent
 
 ### Requisitos
 Conceder informações referentes ao jogo: 
+- Id
 - Nome;
 - Gênero;
 - Níveis.
 
-Conceder informações referentes ao player (jogador): 
-- Id/apelido;
+Conceder informações referentes ao player (jogador):
+- Id 
+- Apelido;
 - Nome real;
 - Email;
 - Idade.
 
 Conceder informações referentes ao desempenho: 
+- Jogo;
+- Jogador;
 - Pontuação;
 - Data de alcance;
 - Nivel atual.
