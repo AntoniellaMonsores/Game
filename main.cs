@@ -25,6 +25,8 @@ class Program {
                     break;
                 case 5 : ListarUsers();
                     break;
+                case 6 : ListarScore();
+                    break;
             }
         }
 
@@ -53,7 +55,7 @@ class Program {
         Console.WriteLine("Informações referentes ao jogo");
         Console.WriteLine();
         
-        Console.Write("Numeração do jogo: ");
+        Console.Write("Numeração: ");
         int id = int.Parse(Console.ReadLine());
         
         Console.Write("Nome: ");
@@ -75,7 +77,7 @@ class Program {
         Console.WriteLine("Informações referentes ao jogador");
         Console.WriteLine();
         
-        Console.Write("Numeração do jogador: ");
+        Console.Write("Numeração: ");
         int id = int.Parse(Console.ReadLine());
         
         Console.Write("Idade: ");
@@ -98,13 +100,13 @@ class Program {
     {
         int func;
         
-        Console.WriteLine();
-        Console.WriteLine("00 - Lembrar jogos cadastrados");
-        Console.WriteLine("01 - Lembrar jogadores cadastrados");
-        Console.WriteLine("02 - Cadastrar pontuação");
-        
         do 
         {
+            Console.WriteLine();
+            Console.WriteLine("00 - Lembrar jogos cadastrados");
+            Console.WriteLine("01 - Lembrar jogadores cadastrados");
+            Console.WriteLine("02 - Cadastrar pontuação");
+        
             func = int.Parse(Console.ReadLine());
             
             switch (func) {
@@ -159,6 +161,46 @@ class Program {
         for (int i = 0; i < users.Count; i++)
             Console.WriteLine($"{users[i]}");
     }
-}
+    
+    public static void ListarScore()
+    {
+        int func;
+        
+        Console.WriteLine();
+        Console.WriteLine("A pontuação será dada de acordo com o jogo e jogador informado");
+        
+        do 
+        {
+            Console.WriteLine();
+            Console.WriteLine("00 - Lembrar jogos cadastrados");
+            Console.WriteLine("01 - Lembrar jogadores cadastrados");
+            Console.WriteLine("02 - Vizualizar pontuações");
 
+            func = int.Parse(Console.ReadLine());
+            
+            switch (func) {
+                case 0 : ListarGames(); 
+                    break;
+                case 1 : ListarUsers(); 
+                    break;
+            }
+        }
+
+        while (func != 2);
+        
+        Console.WriteLine();
+        
+        Console.Write("Id do jogo: ");
+        int idGame = int.Parse(Console.ReadLine());
+
+        Console.Write("Id do usuário: ");
+        int idUser = int.Parse(Console.ReadLine());
+        
+        List<Score> score = Sistema.ScoreListar(idGame, idUser);
+        
+        Console.WriteLine();
+        
+        for (int i = 0; i < score.Count; i++)
+            Console.WriteLine($"{score[i]}");
+    }
 }
