@@ -6,6 +6,7 @@ class Sistema {
     private static Game[] games = new Game[5];
     private static int nGames;
     private static List<Player> players = new List<Player>();
+    private static List<Score> score = new List<Score>();
 
     public static void GameInserir(Game obj)
     {
@@ -58,10 +59,12 @@ class Sistema {
         players.Add(obj);
     }
 
-    public static void PlayerExcluir(Player obj)
+    public static void PlayerExcluir(int idUser)
     {
-        // Exclusão de um obj da lista de jogadores
-        players.Remove(obj);
+        // Exclusão de um elemento da lista de jogadores
+        // Exclusão feita a partir do índice do elemento
+        
+        players.RemoveAt(idUser);
     }
 
     /*
@@ -74,5 +77,42 @@ class Sistema {
     {
         // Retorno dos elementos da lista de jogadores
         return players;
+    }
+
+    public static void ScoreInserir(Score obj)
+    {
+        // Inserção do obj na lista de jogadores
+        score.Add(obj);
+    }
+
+    public static void ScoreExcluir(int idScore)
+    {
+        // Exclusão de um elemento da lista de jogadores
+        // Exclusão feita a partir do índice do elemento
+        
+        score.RemoveAt(idScore);
+    }
+
+    /*
+    public _ ScoreAtualizar()
+    {
+        
+    }*/
+
+    public static List<Score> ScoreListar(int idGame, int idUser)
+    {
+        // Retorno dos elementos da lista de jogadores
+        // Criação de uma lista auxiliar
+        // Retorno apenas da pontuação referente ao jogo e jogador informado
+
+        List<Score> aux = new List<Score>();
+        
+        foreach (Score s in score)
+        {
+            if (s.GetGameId() == idGame && s.GetUserId() == idUser)
+                aux.Add(s);
+        }
+        
+        return aux;
     }
 }
