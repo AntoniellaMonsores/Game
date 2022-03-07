@@ -22,32 +22,32 @@ class Sistema {
         games[nGames++] = obj;
     }
 
-    public static void GameExcluir(int idGame)
+    public static void GameExcluir(Game obj)
     {
         // Exclusão de um elemento do array "games" por seu índice
         // Deslocamento dos elementos do array
         // Redefinição do tamanho do array
 
-        for (int i = idGame; i < games.Length - 1; i++) 
+        int id = games.IndexOf(obj);
+        
+        for (int i = id; i < nGames - 1; i++) 
         {
             games[i] = games[i + 1];
         }
 
-        Array.Resize(ref games, nGames--);
+        nGames--;
     }
-    
+
     public static void GameAtualizar(Game obj)
     {
-    // fazer isso aqui: public static void GameAtualizar(int id, Game obj)
-    // ou criar um GetId para a classe Game
-    // localizar
-      Game aux = GameListar(obj.GetId());
-      if (aux != null)
-      {
-        aux.SetNome(obj.GetNome());
-        aux.SetGenero(obj.GetGenero());
-        aux.SetNiveis(obj.GetNiveis());
-      }
+        Game aux = GameListar(obj.GetId());
+        
+        if (aux != null)
+        {
+            aux.SetNome(obj.GetNome());
+            aux.SetGenero(obj.GetGenero());
+            aux.SetNiveis(obj.GetNiveis());
+        }
     }
     
     public static Game[] GameListar()
@@ -76,12 +76,13 @@ class Sistema {
         players.Add(obj);
     }
 
-    public static void PlayerExcluir(int idUser)
+    public static void PlayerExcluir(Player obj)
     {
         // Exclusão de um elemento da lista de jogadores
         // Exclusão feita a partir do índice do elemento
         
-        players.RemoveAt(idUser);
+        int id = players.IndexOf(obj);
+        players.RemoveAt(id);
     }
 
     /*
@@ -104,12 +105,13 @@ class Sistema {
         score.Add(obj);
     }
 
-    public static void ScoreExcluir(int idScore)
+    public static void ScoreExcluir(Score obj)
     {
         // Exclusão de um elemento da lista de jogadores
         // Exclusão feita a partir do índice do elemento
         
-        score.RemoveAt(idScore);
+        int id = score.IndexOf(obj);
+        score.RemoveAt(id);
     }
 
     public static void ScoreAtualizar(int id, Score obj)
