@@ -2,17 +2,23 @@ using System;
 
 class Game {
 
+    private int id;
+    private int niveis;
     private string nome;
     private string genero;
-    private int niveis;
-
-    public Game(string nome, string genero, int niveis)
+    
+    public Game(int id, string nome, string genero, int niveis)
     {
+        this.id = id;
         this.nome = nome;
         this.genero = genero;
         this.niveis = niveis;
     }
-
+    
+    public void SetId(int id) {
+        this.id = id;
+    }
+    
     public void SetNome(string nome) {
         this.nome = nome;
     }
@@ -23,6 +29,10 @@ class Game {
     
     public void SetNiveis(int niveis) {
         this.niveis = niveis;
+    }
+    
+    public int GetId() { 
+        return id; 
     }
     
     public string GetNome() { 
@@ -38,6 +48,6 @@ class Game {
     }
     
     public override string ToString() {
-        return $"{nome} - {genero}";
+        return $"{id} - {nome} - {genero}";
     }
 }
