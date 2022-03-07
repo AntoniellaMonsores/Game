@@ -18,6 +18,8 @@ class Program {
         Sistema.ScoreInserir(e);
         Sistema.ScoreInserir(f);
 
+        Sistema.ScoreAtualizar(obj);
+        
         Sistema.ScoreExcluir(2);
 
         foreach (Score s in Sistema.ScoreListar(1, 2))
