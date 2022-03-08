@@ -22,6 +22,17 @@ class Sistema {
         games[nGames++] = obj;
     }
 
+    public static void GameAtualizar(Game obj)
+    {
+        Game aux = GameListar(obj.GetId());
+        
+        if (aux != null)
+        {
+            aux.SetNome(obj.GetNome());
+            aux.SetGenero(obj.GetGenero());
+            aux.SetNiveis(obj.GetNiveis());
+        }
+    }
     public static void GameExcluir(Game obj)
     {
         // Exclusão de um elemento do array "games" por seu índice
@@ -38,18 +49,6 @@ class Sistema {
         nGames--;
     }
 
-    public static void GameAtualizar(Game obj)
-    {
-        Game aux = GameListar(obj.GetId());
-        
-        if (aux != null)
-        {
-            aux.SetNome(obj.GetNome());
-            aux.SetGenero(obj.GetGenero());
-            aux.SetNiveis(obj.GetNiveis());
-        }
-    }
-    
     public static Game[] GameListar()
     {
         // Retorno de todos os elementos presentes no array "games"
@@ -81,6 +80,13 @@ class Sistema {
         players.Add(obj);
     }
 
+    /*
+    public _ PlayerAtualizar()
+    {
+        
+    }
+    */
+
     public static void PlayerExcluir(Player obj)
     {
         // Exclusão de um elemento da lista de jogadores
@@ -90,12 +96,6 @@ class Sistema {
         
         if (aux != null) players.Remove(aux);
     }
-
-    /*
-    public _ PlayerAtualizar()
-    {
-        
-    }*/
 
     public static List<Player> PlayerListar()
     {
@@ -123,15 +123,6 @@ class Sistema {
         score.Add(obj);
     }
 
-    public static void ScoreExcluir(Score obj)
-    {
-        // Exclusão de um elemento da lista de jogadores
-        // Exclusão feita a partir do índice do elemento
-        
-        int id = score.IndexOf(obj);
-        score.RemoveAt(id);
-    }
-
     public static void ScoreAtualizar(int id, Score obj)
     {
         // Atualização de informações referentes à pontuação
@@ -147,6 +138,16 @@ class Sistema {
             aux.SetPontos(obj.GetPontos());
             aux.SetData(obj.GetData());
         }
+    }
+
+    public static void ScoreExcluir(Score obj)
+    {
+        // Exclusão de um elemento da lista de jogadores
+        // Exclusão feita a partir do índice do elemento
+        
+        int ind = score.IndexOf(obj);
+
+        if (score[ind] != null) score.RemoveAt(ind);
     }
 
     public static List<Score> ScoreListar(int idGame, int idUser)
