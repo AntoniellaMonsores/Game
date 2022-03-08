@@ -51,6 +51,6 @@ class Game {
     
     public override string ToString() 
     {
-        return $"{id:0000} - {nome} - {genero} - Níveis: {niveis}";
+        return $"{id:0000} - {nome} - {genero} - Níveis: {niveis:00}";
     }
 }

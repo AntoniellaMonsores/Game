@@ -61,6 +61,6 @@ class Score {
 
     public override string ToString() 
     {
-        return $"{pontos:0.0} - {data:dd/MM/yyyy} - Nível: {nivel}";
+        return $"{pontos:0.000} - {data:dd/MM/yyyy} - Nível: {nivel:00}";
     }
 }
