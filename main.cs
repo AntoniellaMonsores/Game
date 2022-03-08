@@ -58,15 +58,29 @@ class Program {
         return int.Parse(Console.ReadLine());
     }
 
-    public static int MenuSecundario()
+    public static void MenuSecundario()
     {
-        Console.WriteLine();
-        Console.WriteLine("00 - Lembrar jogos cadastrados");
-        Console.WriteLine("01 - Lembrar jogadores cadastrados");
-        Console.WriteLine("02 - Continuar");
-        Console.WriteLine();
-        
-        return int.Parse(Console.ReadLine());
+        int func;
+
+        do 
+        {
+            Console.WriteLine();
+            Console.WriteLine("00 - Lembrar jogos cadastrados");
+            Console.WriteLine("01 - Lembrar jogadores cadastrados");
+            Console.WriteLine("02 - Continuar");
+            Console.WriteLine();
+            
+            func = int.Parse(Console.ReadLine());
+            
+            switch (func) {
+                case 0 : ListarGames(); 
+                    break;
+                case 1 : ListarUsers(); 
+                    break;
+            }
+        }
+
+        while (func != 2);
     }
     
     public static void CadastrarGame() 
@@ -118,22 +132,7 @@ class Program {
 
     public static void CadastrarScore() 
     {
-        int func;
-        
-        do 
-        {
-            func = MenuSecundario();
-            
-            switch (func) {
-                case 0 : ListarGames(); 
-                    break;
-                case 1 : ListarUsers(); 
-                    break;
-            }
-        }
-
-        while (func != 2);
-        
+        MenuSecundario();
         Console.WriteLine();
         Console.WriteLine("Informações referentes à pontuação");
         Console.WriteLine();
@@ -179,31 +178,15 @@ class Program {
     
     public static void ListarScore()
     {
-        int func;
-        
+        MenuSecundario();
         Console.WriteLine();
         Console.WriteLine("A pontuação será dada de acordo com o jogo e jogador informado");
-        
-        do 
-        {
-            func = MenuSecundario();
-            
-            switch (func) {
-                case 0 : ListarGames(); 
-                    break;
-                case 1 : ListarUsers(); 
-                    break;
-            }
-        }
-
-        while (func != 2);
-        
         Console.WriteLine();
         
-        Console.Write("Id do jogo: ");
+        Console.Write("Numeração do jogo: ");
         int idGame = int.Parse(Console.ReadLine());
 
-        Console.Write("Id do usuário: ");
+        Console.Write("Numeração do usuário: ");
         int idUser = int.Parse(Console.ReadLine());
         
         List<Score> score = Sistema.ScoreListar(idGame, idUser);
@@ -236,14 +219,12 @@ class Program {
 
         while (func != 1);
         
-        func = int.Parse(ConsoleReadLine());
-        
         Console.WriteLine();
         Console.Write("Id do jogo: ");
         
-        id = int.Parse(ConsoleReadLine());
+        id = int.Parse(Console.ReadLine());
 
-        Game obj = new Game(id, 0, "", "");
+        Game obj = new Game(id, "", "", 0);
         Sistema.GameExcluir(obj);
     }
 
@@ -262,19 +243,17 @@ class Program {
             func = int.Parse(Console.ReadLine());
             
             switch (func) {
-                case 0 : ListarGames(); 
+                case 0 : ListarUsers(); 
                     break;
             }
         }
 
         while (func != 1);
         
-        func = int.Parse(ConsoleReadLine());
-        
         Console.WriteLine();
-        Console.Write("Id do jogador: ");
+        Console.Write("Numeração do jogador: ");
         
-        id = int.Parse(ConsoleReadLine());
+        id = int.Parse(Console.ReadLine());
 
         Player obj = new Player(id, 0, "", "", "");
         Sistema.PlayerExcluir(obj);
