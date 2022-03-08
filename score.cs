@@ -10,6 +10,8 @@ class Score {
 
     public Score(int nivel, int idGame, int idUser, double pontos, DateTime data)
     {
+        // Construtor da classe
+        
         this.nivel = nivel;
         this.idGame = idGame;
         this.idUser = idUser;
@@ -57,7 +59,8 @@ class Score {
         return data;
     }
 
-    public override string ToString() {
-        return $"{nivel} - {pontos:0.0} - {data:dd/MM/yyyy}";
+    public override string ToString() 
+    {
+        return $"{pontos:0.0} - {data:dd/MM/yyyy} - Nível: {nivel}";
     }
 }

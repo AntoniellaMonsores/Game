@@ -9,6 +9,8 @@ class Game {
     
     public Game(int id, string nome, string genero, int niveis)
     {
+        // Construtor da classe
+
         this.id = id;
         this.nome = nome;
         this.genero = genero;
@@ -47,7 +49,8 @@ class Game {
         return niveis; 
     }
     
-    public override string ToString() {
-        return $"{id:0000} - {nome} - {genero}";
+    public override string ToString() 
+    {
+        return $"{id:0000} - {nome} - {genero} - Níveis: {niveis}";
     }
 }

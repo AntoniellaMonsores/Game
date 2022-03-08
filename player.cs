@@ -10,6 +10,8 @@ class Player {
 
     public Player(int id, int idade, string apelido, string nome, string email)
     {
+        // Construtor da classe
+
         this.id = id;
         this.idade = idade;
         this.apelido = apelido;
@@ -57,7 +59,8 @@ class Player {
         return email;
     }
 
-    public override string ToString() {
+    public override string ToString() 
+    {
         return $"{id:0000} - {apelido} - {email}";
     }
 }
