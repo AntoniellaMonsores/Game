@@ -55,6 +55,7 @@ class Program {
 
         Console.WriteLine();
         Console.WriteLine("O que deseja?");
+        Console.WriteLine();
         Console.WriteLine("01 - Cadastrar jogo");
         Console.WriteLine("02 - Cadastrar jogador");
         Console.WriteLine("03 - Cadastrar pontuação");
@@ -102,7 +103,6 @@ class Program {
         while (func != 2);
     }
     
-
     public static void MenuGame()
     {
         // Menu game
@@ -203,9 +203,9 @@ class Program {
         // O usuário informa as características da pontuação
         // A pontuação é inserida no sistema
 
+        int nivel;
         int idGame;
         int idUser;
-        int nivel;
         double pontos;
         DateTime data;
 
@@ -240,8 +240,14 @@ class Program {
         // Permite a mudança dos dados referentes a um jogo
         // O id não será alterado
 
+        int id;
+        int niveis;
+        string nome;
+        string genero;
+        
         MenuGame();
 
+        Console.WriteLine();
         Console.Write("Id do jogo a ser atualizado: ");
         id = int.Parse(Console.ReadLine());
 
@@ -269,7 +275,33 @@ class Program {
 
     public static void AtualizarScore()
     {
- 
+        int id;
+        int nivel;
+        double pontos;
+        DateTime data;
+
+        int[] valores = ListarScore();
+
+        Console.WriteLine();
+    
+        Console.Write("Numeração da pontuação a ser atualizada: ");
+        id = int.Parse(Console.ReadLine());
+
+        Console.WriteLine();
+        Console.WriteLine("Novos dados");
+        Console.WriteLine();
+    
+        Console.Write("Nivel: ");
+        nivel = int.Parse(Console.ReadLine());
+
+        Console.Write("Pontuação: ");
+        pontos = double.Parse(Console.ReadLine());
+
+        Console.Write("Data: ");
+        data = DateTime.Parse(Console.ReadLine());
+
+        Score obj = new Score(nivel, valores[0], valores[1], pontos, data);
+        Sistema.ScoreAtualizar(id, obj);
     }
 
     public static void ExcluirGame()
@@ -283,7 +315,7 @@ class Program {
         int id;
      
         Console.WriteLine();
-        Console.Write("Id do jogo: ");
+        Console.Write("Numeração do jogo: ");
         
         id = int.Parse(Console.ReadLine());
 
@@ -386,6 +418,8 @@ class Program {
        
         MenuScore();
     
+        Console.WriteLine();
+
         Console.Write("Numeração do jogo: ");
         idGame = int.Parse(Console.ReadLine());
 
@@ -397,7 +431,9 @@ class Program {
         Console.WriteLine();
         
         for (int i = 0; i < score.Count; i++)
+        {
             Console.WriteLine($"{i:0000} - {score[i]}");
+        }
 
         int[] valores = {idGame, idUser};
 
