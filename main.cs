@@ -5,6 +5,9 @@ class Program {
 
     public static void Main(string[] args)
     {
+        // Classe Main
+        // Determinação dos "serviços" a serem prestados
+
         int func;
         
         Console.WriteLine("Bem-vindo(a)!");
@@ -41,6 +44,9 @@ class Program {
 
     public static int MenuInicial()
     {
+        // Menu inicial
+        // Visualização do usuário
+
         Console.WriteLine();
         Console.WriteLine("O que deseja?");
         Console.WriteLine("01 - Cadastrar jogo");
@@ -60,6 +66,10 @@ class Program {
 
     public static void MenuSecundario()
     {
+        // Menu secundário
+        // Usado em classes como CadastrarScore() e ListarScore()
+        // Possibilita a checagem de jogos e jogadores cadastrados
+
         int func;
 
         do 
@@ -85,6 +95,10 @@ class Program {
     
     public static void CadastrarGame() 
     {
+        // Cadastrar game
+        // O usuário informa as características do jogo
+        // O jogo é inserido no sistema
+
         Console.WriteLine();
         Console.WriteLine("Informações referentes ao jogo");
         Console.WriteLine();
@@ -107,6 +121,10 @@ class Program {
 
     public static void CadastrarUser() 
     {   
+        // Cadastrar user
+        // O usuário informa as características do jogador
+        // O jogador é inserido no sistema
+
         Console.WriteLine();
         Console.WriteLine("Informações referentes ao jogador");
         Console.WriteLine();
@@ -132,6 +150,12 @@ class Program {
 
     public static void CadastrarScore() 
     {
+        // Cadastrar score
+        // Pontuação associada a um jogo e jodador específicos
+        // Possibilidade de visualização dos jogos e jogadores já cadastrados
+        // O usuário informa as características da pontuação
+        // A pontuação é inserida no sistema
+
         MenuSecundario();
         Console.WriteLine();
         Console.WriteLine("Informações referentes à pontuação");
@@ -158,6 +182,9 @@ class Program {
 
     public static void ListarGames()
     {
+        // Listar games
+        // Listagem de todos os jogos atualmente cadastrados no sistema
+
         Game[] games = Sistema.GameListar();
         
         Console.WriteLine();
@@ -168,6 +195,9 @@ class Program {
     
     public static void ListarUsers()
     {
+        // Listar users
+        // Listagem de todos os jogadores atualmente cadastrados no sistema
+
         List<Player> users = Sistema.PlayerListar();
         
         Console.WriteLine();
@@ -178,6 +208,10 @@ class Program {
     
     public static void ListarScore()
     {
+        // Listar score
+        // Listagem de todos os scores associados a um jogo e jogador específicos
+        // Possível visualização dos jogos e jogadores cadastrados no sistema
+
         MenuSecundario();
         Console.WriteLine();
         Console.WriteLine("A pontuação será dada de acordo com o jogo e jogador informado");
@@ -199,6 +233,10 @@ class Program {
 
     public static void ExcluirGame()
     {
+        // Excluir game
+        // Permite a vizualização dos jogos cadastrados
+        // Resulta na exclusão do jogo correspondente ao id informado
+
         int func; 
         int id;
         
@@ -230,6 +268,10 @@ class Program {
 
     public static void ExcluirUser()
     {
+        // Excluir user
+        // Permite a vizualização dos jogadores cadastrados
+        // Resulta na exclusão do jogador correspondente ao id informado
+
         int func; 
         int id;
         
