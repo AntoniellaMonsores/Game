@@ -275,6 +275,11 @@ class Program {
 
     public static void AtualizarScore()
     {
+        // Atualizar score
+        // Permite a mudança dos dados referentes à pontuação
+        // O id não será alterado
+        // O jogo e o jogador a ela [pontuação] associados também não serão alterados
+
         int id;
         int nivel;
         double pontos;
