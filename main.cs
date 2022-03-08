@@ -278,14 +278,14 @@ class Program {
     {
         // Excluir user
         // Faz uso da classe ListarScore()
-        // Resulta na exclusão do score correspondente ao id informado
+        // Resulta na exclusão do score informado
 
         int id;
         int[] val = ListarScore();
 
         Console.WriteLine();
         Console.Write("Numeração do score: ");
-        
+
         id = int.Parse(Console.ReadLine());
 
         Console.WriteLine();
