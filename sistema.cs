@@ -28,9 +28,9 @@ class Sistema {
         // Deslocamento dos elementos do array
         // Redefinição do tamanho do array
 
-        int id = games.IndexOf(obj);
-        
-        for (int i = id; i < nGames - 1; i++) 
+        int ind = Array.IndexOf(games, GameListar(obj.GetId()));
+
+        for (int i = ind; i < nGames - 1; i++) 
         {
             games[i] = games[i + 1];
         }
@@ -65,8 +65,13 @@ class Sistema {
     public static Game GameListar(int id)
     {
         // Retorno de um elemento específico da lista de jogos
+        // FindIndex : retorno do índice do elemento com parâmetro apresentado
         
-        return games[id];
+        int ind = Array.FindIndex(games, obj => obj.GetId() == id);
+
+        if (games[ind] != null) return games[ind];
+
+        return null;
     }
 
     public static void PlayerInserir(Player obj)
@@ -81,8 +86,9 @@ class Sistema {
         // Exclusão de um elemento da lista de jogadores
         // Exclusão feita a partir do índice do elemento
         
-        int id = players.IndexOf(obj);
-        players.RemoveAt(id);
+        Player aux = PlayerListar(obj.GetId());
+        
+        if (aux != null) players.Remove(aux);
     }
 
     /*
@@ -96,6 +102,18 @@ class Sistema {
         // Retorno dos elementos da lista de jogadores
         
         return players;
+    }
+
+    public static Player PlayerListar(int id) 
+    {
+        // Retorno de um elemento específico da lista de jogos
+        // FindIndex : retorno do índice do elemento com parâmetro apresentado
+        
+        int ind = players.FindIndex(obj => obj.GetId() == id);
+
+        if (players[ind] != null) return players[ind];
+
+        return null;
     }
 
     public static void ScoreInserir(Score obj)
