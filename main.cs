@@ -24,9 +24,9 @@ class Program {
                     break;
                 case 3 : CadastrarScore();
                     break;
-                case 4 : AtualizarGames();
+                case 4 : AtualizarGame();
                     break;
-                case 5 : AtualizarUsers();
+                case 5 : AtualizarUser();
                     break;
                 case 6 : AtualizarScore();
                     break;
@@ -73,10 +73,10 @@ class Program {
         return int.Parse(Console.ReadLine());
     }
 
-    public static void MenuSecundario()
+    public static void MenuScore()
     {
         // Menu secundário
-        // Usado em classes como CadastrarScore() e ListarScore()
+        // Usado em classes referentes ao score
         // Possibilita a checagem de jogos e jogadores cadastrados
 
         int func;
@@ -102,117 +102,15 @@ class Program {
         while (func != 2);
     }
     
-    public static void CadastrarGame() 
+
+    public static void MenuGame()
     {
-        // Cadastrar game
-        // O usuário informa as características do jogo
-        // O jogo é inserido no sistema
-
-        Console.WriteLine();
-        Console.WriteLine("Informações referentes ao jogo");
-        Console.WriteLine();
-        
-        Console.Write("Numeração: ");
-        int id = int.Parse(Console.ReadLine());
-        
-        Console.Write("Nome: ");
-        string nome = Console.ReadLine();
-
-        Console.Write("Gênero: ");
-        string genero = Console.ReadLine();
-
-        Console.Write("Quantidade de níveis: ");
-        int niveis = int.Parse(Console.ReadLine());
-        
-        Game game = new Game(id, nome, genero, niveis);
-        Sistema.GameInserir(game);
-    }
-
-    public static void CadastrarUser() 
-    {   
-        // Cadastrar user
-        // O usuário informa as características do jogador
-        // O jogador é inserido no sistema
-
-        Console.WriteLine();
-        Console.WriteLine("Informações referentes ao jogador");
-        Console.WriteLine();
-        
-        Console.Write("Numeração: ");
-        int id = int.Parse(Console.ReadLine());
-        
-        Console.Write("Idade: ");
-        int idade = int.Parse(Console.ReadLine());
-
-        Console.Write("Apelido: ");
-        string apelido = Console.ReadLine();
-        
-        Console.Write("Nome: ");
-        string nome = Console.ReadLine();
-        
-        Console.Write("Email: ");
-        string email = Console.ReadLine();
-
-        Player user = new Player(id, idade, apelido, nome, email);
-        Sistema.PlayerInserir(user);
-    }
-
-    public static void CadastrarScore() 
-    {
-        // Cadastrar score
-        // Pontuação associada a um jogo e jodador específicos
-        // Possibilidade de visualização dos jogos e jogadores já cadastrados
-        // O usuário informa as características da pontuação
-        // A pontuação é inserida no sistema
-
-        MenuSecundario();
-        Console.WriteLine();
-        Console.WriteLine("Informações referentes à pontuação");
-        Console.WriteLine();
-        
-        Console.Write("Numeração do jogo: ");
-        int idGame = int.Parse(Console.ReadLine());
-
-        Console.Write("Numeração do jogador: ");
-        int idUser = int.Parse(Console.ReadLine());
-
-        Console.Write("Nivel: ");
-        int nivel = int.Parse(Console.ReadLine());
-
-        Console.Write("Pontuação: ");
-        double pontos = double.Parse(Console.ReadLine());
-
-        Console.Write("Data: ");
-        DateTime data = DateTime.Parse(Console.ReadLine());
-
-        Score score = new Score(nivel, idGame, idUser, pontos, data);
-        Sistema.ScoreInserir(score);
-    }
-
-    public static void AtualizarGames()
-    {
- 
-    }
-
-    public static void AtualizarUsers()
-    {
- 
-    }
-
-    public static void AtualizarScore()
-    {
- 
-    }
-
-    public static void ExcluirGame()
-    {
-        // Excluir game
-        // Permite a vizualização dos jogos cadastrados
-        // Resulta na exclusão do jogo correspondente ao id informado
+        // Menu game
+        // Usado em classes referentes ao jogo
+        // Possibilita a visualização dos jogos cadastrados
 
         int func; 
-        int id;
-        
+  
         do 
         {
             Console.WriteLine();
@@ -229,7 +127,161 @@ class Program {
         }
 
         while (func != 1);
+    }
+
+    public static void CadastrarGame() 
+    {
+        // Cadastrar game
+        // O usuário informa as características do jogo
+        // O jogo é inserido no sistema
+
+        int id;
+        int niveis;
+        string nome;
+        string genero;
+
+        Console.WriteLine();
+        Console.WriteLine("Dados referentes ao jogo");
+        Console.WriteLine();
         
+        Console.Write("Numeração: ");
+        id = int.Parse(Console.ReadLine());
+        
+        Console.Write("Nome: ");
+        nome = Console.ReadLine();
+
+        Console.Write("Gênero: ");
+        genero = Console.ReadLine();
+
+        Console.Write("Quantidade de níveis: ");
+        niveis = int.Parse(Console.ReadLine());
+        
+        Game game = new Game(id, nome, genero, niveis);
+        Sistema.GameInserir(game);
+    }
+
+    public static void CadastrarUser() 
+    {   
+        // Cadastrar user
+        // O usuário informa as características do jogador
+        // O jogador é inserido no sistema
+
+        int id;
+        int idade;
+        string nome;
+        string email;
+        string apelido;
+
+        Console.WriteLine();
+        Console.WriteLine("Dados referentes ao jogador");
+        Console.WriteLine();
+        
+        Console.Write("Numeração: ");
+        id = int.Parse(Console.ReadLine());
+        
+        Console.Write("Idade: ");
+        idade = int.Parse(Console.ReadLine());
+
+        Console.Write("Apelido: ");
+        apelido = Console.ReadLine();
+        
+        Console.Write("Nome: ");
+        nome = Console.ReadLine();
+        
+        Console.Write("Email: ");
+        email = Console.ReadLine();
+
+        Player user = new Player(id, idade, apelido, nome, email);
+        Sistema.PlayerInserir(user);
+    }
+
+    public static void CadastrarScore() 
+    {
+        // Cadastrar score
+        // Pontuação associada a um jogo e jodador específicos
+        // Possibilidade de visualização dos jogos e jogadores já cadastrados
+        // O usuário informa as características da pontuação
+        // A pontuação é inserida no sistema
+
+        int idGame;
+        int idUser;
+        int nivel;
+        double pontos;
+        DateTime data;
+
+        MenuScore();
+
+        Console.WriteLine();
+        Console.WriteLine("Dados referentes à pontuação");
+        Console.WriteLine();
+        
+        Console.Write("Numeração do jogo: ");
+        idGame = int.Parse(Console.ReadLine());
+
+        Console.Write("Numeração do jogador: ");
+        idUser = int.Parse(Console.ReadLine());
+
+        Console.Write("Nivel: ");
+        nivel = int.Parse(Console.ReadLine());
+
+        Console.Write("Pontuação: ");
+        pontos = double.Parse(Console.ReadLine());
+
+        Console.Write("Data: ");
+        data = DateTime.Parse(Console.ReadLine());
+
+        Score score = new Score(nivel, idGame, idUser, pontos, data);
+        Sistema.ScoreInserir(score);
+    }
+
+    public static void AtualizarGame()
+    {
+        // Atualizar game
+        // Permite a mudança dos dados referentes a um jogo
+        // O id não será alterado
+
+        MenuGame();
+
+        Console.Write("Id do jogo a ser atualizado: ");
+        id = int.Parse(Console.ReadLine());
+
+        Console.WriteLine();
+        Console.WriteLine("Novos dados");
+        Console.WriteLine();
+        
+        Console.Write("Nome: ");
+        nome = Console.ReadLine();
+
+        Console.Write("Gênero: ");
+        genero = Console.ReadLine();
+
+        Console.Write("Quantidade de níveis: ");
+        niveis = int.Parse(Console.ReadLine());
+        
+        Game game = new Game(id, nome, genero, niveis);
+        Sistema.GameAtualizar(game);
+    }
+
+    public static void AtualizarUser()
+    {
+ 
+    }
+
+    public static void AtualizarScore()
+    {
+ 
+    }
+
+    public static void ExcluirGame()
+    {
+        // Excluir game
+        // Permite a vizualização dos jogos cadastrados
+        // Resulta na exclusão do jogo correspondente ao id informado
+
+        MenuGame();
+        
+        int id;
+     
         Console.WriteLine();
         Console.Write("Id do jogo: ");
         
@@ -281,7 +333,7 @@ class Program {
         // Resulta na exclusão do score informado
 
         int id;
-        int[] val = ListarScore();
+        int[] valores = ListarScore();
 
         Console.WriteLine();
         Console.Write("Numeração do score: ");
@@ -290,7 +342,7 @@ class Program {
 
         Console.WriteLine();
 
-        Sistema.ScoreExcluir(Sistema.ScoreListar(id, val[0], val[1]));
+        Sistema.ScoreExcluir(Sistema.ScoreListar(id, valores[0], valores[1]));
     }
 
     public static void ListarGames()
@@ -303,7 +355,9 @@ class Program {
         Console.WriteLine();
         
         for (int i = 0; i < games.Length; i++)
+        {
             Console.WriteLine($"{games[i]}");
+        }
     }
     
     public static void ListarUsers()
@@ -316,7 +370,9 @@ class Program {
         Console.WriteLine();
         
         for (int i = 0; i < users.Count; i++)
+        {
             Console.WriteLine($"{users[i]}");
+        }
     }
     
     public static int[] ListarScore()
@@ -327,8 +383,8 @@ class Program {
 
         int idGame;
         int idUser;
-
-        MenuSecundario();
+       
+        MenuScore();
     
         Console.Write("Numeração do jogo: ");
         idGame = int.Parse(Console.ReadLine());
@@ -343,8 +399,8 @@ class Program {
         for (int i = 0; i < score.Count; i++)
             Console.WriteLine($"{i:0000} - {score[i]}");
 
-        int[] val = {idGame, idUser};
+        int[] valores = {idGame, idUser};
 
-        return val;
+        return valores;
     }
 }
