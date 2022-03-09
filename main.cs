@@ -129,6 +129,29 @@ class Program {
         while (func != 1);
     }
 
+    public static void MenuUser()
+    {
+        int func; 
+    
+        do 
+        {
+            Console.WriteLine();
+            Console.WriteLine("00 - Lembrar jogadores cadastrados");
+            Console.WriteLine("01 - Continuar");
+            Console.WriteLine();
+            
+            func = int.Parse(Console.ReadLine());
+            
+            switch (func) {
+                case 0 : ListarUsers(); 
+                    break;
+            }
+        }
+
+        while (func != 1);
+        
+    }
+
     public static void CadastrarGame() 
     {
         // Cadastrar game
@@ -156,8 +179,8 @@ class Program {
         Console.Write("Quantidade de níveis: ");
         niveis = int.Parse(Console.ReadLine());
         
-        Game game = new Game(id, nome, genero, niveis);
-        Sistema.GameInserir(game);
+        Game obj = new Game(id, nome, genero, niveis);
+        Sistema.GameInserir(obj);
     }
 
     public static void CadastrarUser() 
@@ -191,8 +214,8 @@ class Program {
         Console.Write("Email: ");
         email = Console.ReadLine();
 
-        Player user = new Player(id, idade, apelido, nome, email);
-        Sistema.PlayerInserir(user);
+        Player obj = new Player(id, idade, apelido, nome, email);
+        Sistema.PlayerInserir(obj);
     }
 
     public static void CadastrarScore() 
@@ -230,8 +253,8 @@ class Program {
         Console.Write("Data: ");
         data = DateTime.Parse(Console.ReadLine());
 
-        Score score = new Score(nivel, idGame, idUser, pontos, data);
-        Sistema.ScoreInserir(score);
+        Score obj = new Score(nivel, idGame, idUser, pontos, data);
+        Sistema.ScoreInserir(obj);
     }
 
     public static void AtualizarGame()
@@ -248,7 +271,7 @@ class Program {
         MenuGame();
 
         Console.WriteLine();
-        Console.Write("Id do jogo a ser atualizado: ");
+        Console.Write("Numeração do jogo a ser atualizado: ");
         id = int.Parse(Console.ReadLine());
 
         Console.WriteLine();
@@ -270,7 +293,40 @@ class Program {
 
     public static void AtualizarUser()
     {
- 
+        // Atualizar user
+        // Permite a mudança dos dados referentes a um jogador
+        // O id não será alterado
+
+        int id;
+        int idade;
+        string nome;
+        string email;
+        string apelido;
+
+        MenuUser();
+
+        Console.WriteLine();
+        Console.Write("Numeração do jogador a ser atualizado: ");
+        id = int.Parse(Console.ReadLine());
+
+        Console.WriteLine();
+        Console.WriteLine("Novos dados");
+        Console.WriteLine();
+        
+        Console.Write("Idade: ");
+        idade = int.Parse(Console.ReadLine());
+
+        Console.Write("Apelido: ");
+        apelido = Console.ReadLine();
+        
+        Console.Write("Nome: ");
+        nome = Console.ReadLine();
+        
+        Console.Write("Email: ");
+        email = Console.ReadLine();
+
+        Player obj = new Player(id, idade, apelido, nome, email);
+        Sistema.PlayerAtualizar(obj);
     }
 
     public static void AtualizarScore()
@@ -334,26 +390,10 @@ class Program {
         // Permite a vizualização dos jogadores cadastrados
         // Resulta na exclusão do jogador correspondente ao id informado
 
-        int func; 
         int id;
         
-        do 
-        {
-            Console.WriteLine();
-            Console.WriteLine("00 - Lembrar jogadores cadastrados");
-            Console.WriteLine("01 - Continuar");
-            Console.WriteLine();
-            
-            func = int.Parse(Console.ReadLine());
-            
-            switch (func) {
-                case 0 : ListarUsers(); 
-                    break;
-            }
-        }
+        MenuUser();
 
-        while (func != 1);
-        
         Console.WriteLine();
         Console.Write("Numeração do jogador: ");
         
