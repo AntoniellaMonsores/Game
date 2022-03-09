@@ -24,6 +24,9 @@ class Sistema {
 
     public static void GameAtualizar(Game obj)
     {
+        // Atualização de dados referentes a um jogo
+        // O id permanecerá o mesmo
+
         Game aux = GameListar(obj.GetId());
         
         if (aux != null)
@@ -81,12 +84,21 @@ class Sistema {
         players.Add(obj);
     }
 
-    /*
-    public _ PlayerAtualizar()
+    public static void PlayerAtualizar(Player obj)
     {
+        // Atualização de dados referentes a um jogador
+        // O id permanecerá o mesmo
+
+        Player aux = PlayerListar(obj.GetId());
         
+        if (aux != null)
+        {
+            aux.SetNome(obj.GetNome());
+            aux.SetIdade(obj.GetIdade());
+            aux.SetEmail(obj.GetEmail());
+            aux.SetApelido(obj.GetApelido());
+        }
     }
-    */
 
     public static void PlayerExcluir(Player obj)
     {
@@ -126,18 +138,18 @@ class Sistema {
 
     public static void ScoreAtualizar(int id, Score obj)
     {
-        // Atualização de informações referentes à pontuação
+        // Atualização de informações referentes a uma pontuação
         // O método recebe o id (índice) do score e o objeto em si
  
         Score aux = ScoreListar(obj.GetGameId(), obj.GetUserId())[id];
         
         if (aux != null) 
         {
+            aux.SetData(obj.GetData());
             aux.SetNivel(obj.GetNivel());
             aux.SetGameId(obj.GetGameId());
             aux.SetUserId(obj.GetUserId());
             aux.SetPontos(obj.GetPontos());
-            aux.SetData(obj.GetData());
         }
     }
 
