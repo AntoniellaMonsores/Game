@@ -22,13 +22,32 @@ class Sistema {
         games[nGames++] = obj;
     }
 
+    public static bool GameIn(int id)
+    {
+        // Verificar se um jogo está cadastrado
+        
+        try 
+        {
+            Game obj = new Game(id, "", "", 0);
+            GameListar(obj.GetId());
+            return true;
+        }
+
+        catch (NullReferenceException)
+        {
+            Console.WriteLine();
+            Console.WriteLine("Erro: jogo não encontrado.");
+            return false;
+        }
+    }
+
     public static void GameAtualizar(Game obj)
     {
         // Atualização de dados referentes a um jogo
         // O id permanecerá o mesmo
 
         Game aux = GameListar(obj.GetId());
-        
+            
         if (aux != null)
         {
             aux.SetNome(obj.GetNome());
@@ -124,7 +143,7 @@ class Sistema {
         
         int ind = players.FindIndex(obj => obj.GetId() == id);
 
-        if (players[ind] != null) return players[ind];
+        if (players[ind] != null) { return players[ind]; }
 
         return null;
     }
