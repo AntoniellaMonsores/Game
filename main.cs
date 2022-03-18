@@ -3,22 +3,6 @@ using System.Collections.Generic;
 
 class Program
 {
-    public static string CharRepeat(int n)
-    {
-        // Inclemento para visualização
-        // Uso repetido de um determinado caracter por um número n de vezes
-
-        return new string('-', n);
-    }
-
-    public static void CharRepeat()
-    {
-        // Inclemento para visualização
-        // Uso repetido de um determinado caracter
-
-        Console.WriteLine($"\n{new string('-', 46)}");
-    }
-
     public static void Main(string[] args)
     {
         // Classe Main
@@ -79,8 +63,7 @@ class Program
 
     public static int MenuInicial()
     {
-        // Menu inicial
-        // Visualização do usuário
+        // Menu inicial = visualização do usuário
 
         Console.WriteLine();
         Console.WriteLine("Escolha de operações");
@@ -105,7 +88,6 @@ class Program
 
     public static void MenuScore()
     {
-        // Menu score
         // Usado em classes referentes ao score
         // Possibilita a checagem de jogos e jogadores cadastrados
 
@@ -137,7 +119,6 @@ class Program
 
     public static void MenuGame()
     {
-        // Menu game
         // Usado em classes referentes ao jogo
         // Possibilita a visualização dos jogos cadastrados
 
@@ -165,7 +146,6 @@ class Program
 
     public static void MenuUser()
     {
-        // Menu user
         // Usado em classes referentes ao jogador
         // Possibilita a visualização dos jogadores cadastrados
 
@@ -194,9 +174,7 @@ class Program
 
     public static void CadastrarGame()
     {
-        // Cadastrar game
-        // O usuário informa as características do jogo
-        // O jogo é inserido no sistema
+        // Cadastro de jogos
 
         int id;
         int niveis;
@@ -227,9 +205,7 @@ class Program
 
     public static void CadastrarUser()
     {
-        // Cadastrar user
-        // O usuário informa as características do jogador
-        // O jogador é inserido no sistema
+        // Cadastro de jogadores (ou usuários)
 
         int id;
         int idade;
@@ -264,11 +240,8 @@ class Program
 
     public static void CadastrarScore()
     {
-        // Cadastrar score
-        // Pontuação associada a um jogo e jodador específicos
-        // Possibilidade de visualização dos jogos e jogadores já cadastrados
-        // O usuário informa as características da pontuação
-        // A pontuação é inserida no sistema
+        // Cadastro de pontuações
+        // Se associa a um jogo e jodador específicos
 
         int nivel;
         int idGame;
@@ -305,7 +278,6 @@ class Program
 
     public static void AtualizarGame()
     {
-        // Atualizar game
         // Permite a mudança dos dados referentes a um jogo
         // O id não será alterado
 
@@ -346,7 +318,6 @@ class Program
 
     public static void AtualizarUser()
     {
-        // Atualizar user
         // Permite a mudança dos dados referentes a um jogador
         // O id não será alterado
 
@@ -384,10 +355,9 @@ class Program
 
     public static void AtualizarScore()
     {
-        // Atualizar score
-        // Permite a mudança dos dados referentes à pontuação
+        // Mudança dos dados referentes à pontuação
         // O id não será alterado
-        // O jogo e o jogador a ela [pontuação] associados também não serão alterados
+        // O jogo e jogador associados a ela não serão alterados
 
         int id;
         int nivel;
@@ -423,9 +393,8 @@ class Program
 
     public static void ExcluirGame()
     {
-        // Excluir game
-        // Permite a vizualização dos jogos cadastrados
-        // Resulta na exclusão do jogo correspondente ao id informado
+        // Resulta na exclusão de um jogo
+        // O id deve ser informado
 
         MenuGame();
 
@@ -448,9 +417,8 @@ class Program
 
     public static void ExcluirUser()
     {
-        // Excluir user
-        // Permite a vizualização dos jogadores cadastrados
-        // Resulta na exclusão do jogador correspondente ao id informado
+        // Resulta na exclusão do jogador
+        // O id deve ser informado
 
         int id;
 
@@ -467,7 +435,6 @@ class Program
 
     public static void ExcluirScore()
     {
-        // Excluir user
         // Faz uso da classe ListarScore()
         // Resulta na exclusão do score informado
 
@@ -486,8 +453,7 @@ class Program
 
     public static void ListarGames()
     {
-        // Listar games
-        // Listagem de todos os jogos atualmente cadastrados no sistema
+        // Listagem de todos os jogos cadastrados
 
         Game[] games = Sistema.GameListar();
 
@@ -512,8 +478,7 @@ class Program
 
     public static void ListarUsers()
     {
-        // Listar users
-        // Listagem de todos os jogadores atualmente cadastrados no sistema
+        // Listagem de todos os jogadores (ou usuários) cadastrados
 
         List<Player> users = Sistema.PlayerListar();
 
@@ -538,9 +503,7 @@ class Program
 
     public static int[] ListarScore()
     {
-        // Listar score
         // Listagem de todos os scores associados a um jogo e jogador específicos
-        // Possível visualização dos jogos e jogadores cadastrados no sistema
 
         int idGame;
         int idUser;
@@ -570,5 +533,21 @@ class Program
         int[] valores = { idGame, idUser };
 
         return valores;
+    }
+
+    public static string CharRepeat(int n)
+    {
+        // Inclemento para visualização
+        // Uso repetido de um determinado caracter por um número n de vezes
+
+        string caracter = new string('-', n); 
+        return caracter;
+    }
+
+    public static void CharRepeat()
+    {
+        // Chamada do método "CharRepeat(int n)" com valor fixo de n
+
+        Console.WriteLine($"\n{CharRepeat(46)}");
     }
 }
