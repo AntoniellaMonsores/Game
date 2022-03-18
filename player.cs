@@ -1,6 +1,7 @@
 using System;
+using System.Collections;
 
-class Player {
+class Player : IComparable {
 
     private int id;
     private int idade;
@@ -13,10 +14,10 @@ class Player {
         // Construtor da classe
 
         this.id = id;
-        this.idade = idade;
-        this.apelido = apelido;
         this.nome = nome;
         this.email = email;
+        this.idade = idade;
+        this.apelido = apelido;
     }
     
     public void SetId(int id) {
@@ -59,8 +60,13 @@ class Player {
         return email;
     }
 
+    public int CompareTo(object obj) 
+    {
+        return id.CompareTo(((Player)obj).id);
+    }
+
     public override string ToString() 
     {
-        return $"{id:0000} - {apelido} - {email}";
+        return $"{id:000000} - {apelido} - {email}";
     }
 }

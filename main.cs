@@ -3,6 +3,22 @@ using System.Collections.Generic;
 
 class Program
 {
+    public static string CharRepeat(int n)
+    {
+        // Inclemento para visualização (menus)
+        // Uso repetido de um caracter por um número n de vezes
+
+        string caracter = new string('-', n); 
+        return caracter;
+    }
+
+    public static void CharRepeat()
+    {
+        // Chamada do método "CharRepeat(int n)" com valor fixo de n
+
+        Console.WriteLine($"\n{CharRepeat(46)}");
+    }
+
     public static void Main(string[] args)
     {
         // Classe Main
@@ -287,10 +303,10 @@ class Program
         string genero;
 
         MenuGame();
-
         CharRepeat();
-        Console.WriteLine();
 
+        Console.WriteLine();
+        
         Console.Write("Id do jogo: ");
         id = int.Parse(Console.ReadLine());
 
@@ -483,6 +499,7 @@ class Program
         List<Player> users = Sistema.PlayerListar();
 
         CharRepeat();
+        
         Console.WriteLine();
 
         if (users.Count == 0)
@@ -525,7 +542,7 @@ class Program
 
         for (int i = 0; i < score.Count; i++)
         {
-            Console.WriteLine($"{i:0000} - {score[i]}");
+            Console.WriteLine($"{i:000000} - {score[i]}");
         }
 
         CharRepeat();
@@ -533,21 +550,5 @@ class Program
         int[] valores = { idGame, idUser };
 
         return valores;
-    }
-
-    public static string CharRepeat(int n)
-    {
-        // Inclemento para visualização
-        // Uso repetido de um determinado caracter por um número n de vezes
-
-        string caracter = new string('-', n); 
-        return caracter;
-    }
-
-    public static void CharRepeat()
-    {
-        // Chamada do método "CharRepeat(int n)" com valor fixo de n
-
-        Console.WriteLine($"\n{CharRepeat(46)}");
     }
 }

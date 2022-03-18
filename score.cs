@@ -1,6 +1,7 @@
 using System;
+using System.Collections;
 
-class Score {
+class Score : IComparable {
 
     private int nivel;
     private int idGame;
@@ -57,6 +58,11 @@ class Score {
 
     public DateTime GetData() {
         return data;
+    }
+
+    public int CompareTo(object obj) 
+    {
+        return data.CompareTo(((Score)obj).data);
     }
 
     public override string ToString() 

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 
 class Game {
 
@@ -51,6 +52,6 @@ class Game {
     
     public override string ToString() 
     {
-        return $"{id:0000} - {nome} - {genero} - Níveis: {niveis:00}";
+        return $"{id:000000} - {nome} - {genero} - Níveis: {niveis:00}";
     }
 }

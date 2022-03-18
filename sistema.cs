@@ -133,6 +133,8 @@ class Sistema {
     {
         // Retorno dos elementos da lista de jogadores
         
+        players.Sort();
+
         return players;
     }
 
@@ -143,7 +145,7 @@ class Sistema {
         
         int ind = players.FindIndex(obj => obj.GetId() == id);
 
-        if (players[ind] != null) { return players[ind]; }
+        if (players[ind] != null) return players[ind];
 
         return null;
     }
@@ -178,7 +180,6 @@ class Sistema {
         // Exclusão feita a partir do índice do elemento
         
         int ind = score.IndexOf(obj);
-
         if (score[ind] != null) score.RemoveAt(ind);
     }
 
@@ -190,12 +191,12 @@ class Sistema {
 
         List<Score> aux = new List<Score>();
         
-        foreach (Score s in score)
+        foreach (Score obj in score)
         {
-            if (s.GetGameId() == idGame && s.GetUserId() == idUser)
-                aux.Add(s);
+            if (obj.GetGameId() == idGame && obj.GetUserId() == idUser) aux.Add(obj);
         }
         
+        aux.Sort();
         return aux;
     }
 
