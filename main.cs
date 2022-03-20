@@ -239,7 +239,6 @@ class Program
         }
 
         while (func != 1);
-
     }
 
     public static void CadastrarGame()
@@ -325,6 +324,12 @@ class Program
         Console.WriteLine($"{CharRepeat(13)} Dados da pontuação {CharRepeat(13)}");
         Console.WriteLine();
 
+        Console.Write("Id do jogo: ");
+        idGame = int.Parse(Console.ReadLine());
+
+        Console.Write("Id do jogador: ");
+        idUser = int.Parse(Console.ReadLine());
+
         Console.Write("Data: ");
         data = DateTime.Parse(Console.ReadLine());
 
@@ -333,12 +338,6 @@ class Program
 
         Console.Write("Pontuação: ");
         pontos = double.Parse(Console.ReadLine());
-
-        Console.Write("Id do jogo: ");
-        idGame = int.Parse(Console.ReadLine());
-
-        Console.Write("Id do jogador: ");
-        idUser = int.Parse(Console.ReadLine());
 
         Score obj = new Score(nivel, idGame, idUser, pontos, data);
         Sistema.ScoreInserir(obj);
@@ -594,9 +593,19 @@ class Program
         CharRepeat();
         Console.WriteLine();
 
-        for (int i = 0; i < score.Count; i++)
+        if (score.Count == 0)
         {
-            Console.WriteLine($"{i:000} - {score[i]}");
+            Console.WriteLine("não há pontuações cadastradas");
+        }
+
+        else 
+        {
+            for (int i = 0; i < score.Count; i++)
+            {
+                Console.WriteLine($"{i:000} - {score[i]}");
+            }
+
+            Console.WriteLine();
         }
 
         CharRepeat();
