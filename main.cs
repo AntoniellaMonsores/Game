@@ -6,7 +6,7 @@ class Program
     public static string CharRepeat(int n)
     {
         // Inclemento para visualização (menus)
-        // Uso repetido de um caracter por um número n de vezes
+        // Uso repetido de um caracter por um número 'n' de vezes
 
         string caracter = new string('-', n); 
         return caracter;
@@ -14,7 +14,7 @@ class Program
 
     public static void CharRepeat()
     {
-        // Chamada do método "CharRepeat(int n)" com valor fixo de n
+        // Chamada do método 'CharRepeat(int n)' com valor fixo de 'n'
 
         Console.WriteLine($"\n{CharRepeat(46)}");
     }
@@ -79,7 +79,10 @@ class Program
 
     public static int MenuInicial()
     {
-        // Menu inicial = visualização do usuário
+        // Listagem de opções ao usuário
+        
+        int[] op = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+        int func;
 
         Console.WriteLine();
         Console.WriteLine("Escolha de operações");
@@ -99,7 +102,22 @@ class Program
         Console.WriteLine("12 - Visualizar pontuações");
         Console.WriteLine();
 
-        return int.Parse(Console.ReadLine());
+        try 
+        {
+            func = int.Parse(Console.ReadLine());
+
+            if (Array.IndexOf(op, func) == -1) throw new ArgumentOutOfRangeException(); 
+            else return func;
+        }
+
+        catch
+        {
+            CharRepeat();
+            Console.WriteLine("\nopção inválida");
+            CharRepeat();
+
+            return -1;
+        }
     }
 
     public static void MenuScore()
@@ -107,7 +125,7 @@ class Program
         // Usado em classes referentes ao score
         // Possibilita a checagem de jogos e jogadores cadastrados
 
-        int func;
+        int func = 0;
 
         do
         {
@@ -117,16 +135,28 @@ class Program
             Console.WriteLine("02 - Continuar");
             Console.WriteLine();
 
-            func = int.Parse(Console.ReadLine());
-
-            switch (func)
+            try 
             {
-                case 0:
-                    ListarGames();
-                    break;
-                case 1:
-                    ListarUsers();
-                    break;
+                func = int.Parse(Console.ReadLine());
+
+                switch (func)
+                {
+                    case 0:
+                        ListarGames();
+                        break;
+                    case 1:
+                        ListarUsers();
+                        break;
+                    case 2: break;
+                    default: throw new ArgumentOutOfRangeException(); 
+                }
+            }
+
+            catch
+            {
+                CharRepeat();
+                Console.WriteLine("\nopção inválida");
+                CharRepeat();
             }
         }
 
@@ -138,7 +168,7 @@ class Program
         // Usado em classes referentes ao jogo
         // Possibilita a visualização dos jogos cadastrados
 
-        int func;
+        int func = 0;
 
         do
         {
@@ -147,13 +177,25 @@ class Program
             Console.WriteLine("01 - Continuar");
             Console.WriteLine();
 
-            func = int.Parse(Console.ReadLine());
-
-            switch (func)
+            try
             {
-                case 0:
-                    ListarGames();
-                    break;
+                func = int.Parse(Console.ReadLine());
+
+                switch (func)
+                {
+                    case 0:
+                        ListarGames();
+                        break;
+                    case 1: break;
+                    default: throw new ArgumentOutOfRangeException(); 
+                }
+            }
+
+            catch
+            {
+                CharRepeat();
+                Console.WriteLine("\nopção inválida");
+                CharRepeat();
             }
         }
 
@@ -165,7 +207,7 @@ class Program
         // Usado em classes referentes ao jogador
         // Possibilita a visualização dos jogadores cadastrados
 
-        int func;
+        int func = 0;
 
         do
         {
@@ -174,13 +216,25 @@ class Program
             Console.WriteLine("01 - Continuar");
             Console.WriteLine();
 
-            func = int.Parse(Console.ReadLine());
-
-            switch (func)
+            try 
             {
-                case 0:
-                    ListarUsers();
-                    break;
+                func = int.Parse(Console.ReadLine());
+
+                switch (func)
+                {
+                    case 0:
+                        ListarUsers();
+                        break;
+                    case 1: break;
+                    default: throw new ArgumentOutOfRangeException();
+                }
+            }
+
+            catch
+            {
+                CharRepeat();
+                Console.WriteLine("\nopção inválida");
+                CharRepeat();
             }
         }
 
@@ -542,7 +596,7 @@ class Program
 
         for (int i = 0; i < score.Count; i++)
         {
-            Console.WriteLine($"{i:000000} - {score[i]}");
+            Console.WriteLine($"{i:000} - {score[i]}");
         }
 
         CharRepeat();
