@@ -26,17 +26,19 @@ class Sistema {
     {
         // Verificar se um jogo está cadastrado
 
-        Game[] aux = GameListar();
-    
-        foreach (Game obj in aux)
+        try 
         {
-            if (obj == GameListar(obj.GetId())) return true;
+            Game obj = new Game(id, "", "", 0);
+            GameListar(obj.GetId());
+            return true;
         }
-     
-        Console.WriteLine();
-        Console.WriteLine("Erro: jogo não encontrado.");
-        return false;
-       
+
+        catch (NullReferenceException)
+        {
+            Console.WriteLine();
+            Console.WriteLine("Erro: jogo não encontrado.");
+            return false;
+        }
     }
 
     public static void GameAtualizar(Game obj)
@@ -66,6 +68,8 @@ class Sistema {
         {
             games[i] = games[i + 1];
         }
+
+        games[ind] = null;
 
         nGames--;
     }
