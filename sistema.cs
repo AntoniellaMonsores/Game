@@ -25,20 +25,18 @@ class Sistema {
     public static bool GameIn(int id)
     {
         // Verificar se um jogo está cadastrado
-        
-        try 
-        {
-            Game obj = new Game(id, "", "", 0);
-            GameListar(obj.GetId());
-            return true;
-        }
 
-        catch (NullReferenceException)
+        Game[] aux = GameListar();
+    
+        foreach (Game obj in aux)
         {
-            Console.WriteLine();
-            Console.WriteLine("Erro: jogo não encontrado.");
-            return false;
+            if (obj == GameListar(obj.GetId())) return true;
         }
+     
+        Console.WriteLine();
+        Console.WriteLine("Erro: jogo não encontrado.");
+        return false;
+       
     }
 
     public static void GameAtualizar(Game obj)
@@ -89,9 +87,9 @@ class Sistema {
         // Retorno de um elemento específico da lista de jogos
         // FindIndex : retorno do índice do elemento com parâmetro apresentado
         
-        int ind = Array.FindIndex(games, obj => obj.GetId() == id);
+        int i = Array.FindIndex(games, obj => obj.GetId() == id);
 
-        if (games[ind] != null) return games[ind];
+        if (games[i] != null) return games[i];
 
         return null;
     }
