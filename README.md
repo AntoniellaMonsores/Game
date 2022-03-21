@@ -10,7 +10,7 @@ Conceder informações referentes ao jogo:
 - Gênero;
 - Níveis.
 
-Conceder informações referentes ao player (jogador):
+Conceder informações referentes ao jogador:
 - Id;
 - Apelido;
 - Nome real;
@@ -18,8 +18,8 @@ Conceder informações referentes ao player (jogador):
 - Idade.
 
 Conceder informações referentes ao desempenho: 
-- Jogo;
-- Jogador;
+- Id do jogo;
+- Id do jogador;
 - Pontuação;
 - Data de alcance;
 - Nivel atual.
