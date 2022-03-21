@@ -36,6 +36,19 @@ class Sistema {
         catch { return false; }
     }
 
+    public static bool ScoreIn(int id, int idGame, int idUser)
+    {
+        // Verificar se um jogador está cadastrado
+
+        try 
+        {
+            ScoreListar(id, idGame, idUser);
+            return true;
+        }
+
+        catch { return false; }
+    }
+
     public static void GameInserir(Game obj)
     {
         // Checagem do tamanho do array
