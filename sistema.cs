@@ -3,10 +3,38 @@ using System.Collections.Generic;
 
 class Sistema {
 
-    private static Game[] games = new Game[5];
+    private static Game[] games = new Game[10];
     private static int nGames;
     private static List<Player> players = new List<Player>();
     private static List<Score> score = new List<Score>();
+
+    public static bool GameIn(int id)
+    {
+        // Verificar se um jogo está cadastrado
+
+        try 
+        {
+            Game obj = new Game(id, "", "", 0);
+            GameListar(obj.GetId());
+            return true;
+        }
+
+        catch { return false; }
+    }
+
+    public static bool PlayerIn(int id)
+    {
+        // Verificar se um jogador está cadastrado
+
+        try 
+        {
+            Player obj = new Player(id, 0, "", "", "");
+            PlayerListar(obj.GetId());
+            return true;
+        }
+
+        catch { return false; }
+    }
 
     public static void GameInserir(Game obj)
     {
@@ -20,25 +48,6 @@ class Sistema {
         }
 
         games[nGames++] = obj;
-    }
-
-    public static bool GameIn(int id)
-    {
-        // Verificar se um jogo está cadastrado
-
-        try 
-        {
-            Game obj = new Game(id, "", "", 0);
-            GameListar(obj.GetId());
-            return true;
-        }
-
-        catch (NullReferenceException)
-        {
-            Console.WriteLine();
-            Console.WriteLine("Erro: jogo não encontrado.");
-            return false;
-        }
     }
 
     public static void GameAtualizar(Game obj)
@@ -127,7 +136,6 @@ class Sistema {
         // Exclusão feita a partir do índice do elemento
         
         Player aux = PlayerListar(obj.GetId());
-        
         if (aux != null) players.Remove(aux);
     }
 
@@ -136,7 +144,6 @@ class Sistema {
         // Retorno dos elementos da lista de jogadores
         
         players.Sort();
-
         return players;
     }
 
@@ -145,9 +152,9 @@ class Sistema {
         // Retorno de um elemento específico da lista de jogos
         // FindIndex : retorno do índice do elemento com parâmetro apresentado
         
-        int ind = players.FindIndex(obj => obj.GetId() == id);
+        int i = players.FindIndex(obj => obj.GetId() == id);
 
-        if (players[ind] != null) return players[ind];
+        if (players[i] != null) return players[i];
 
         return null;
     }

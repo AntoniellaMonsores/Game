@@ -113,7 +113,7 @@ class Program
         catch
         {
             CharRepeat();
-            Console.WriteLine("\nopção inválida");
+            Console.WriteLine("\nErro: opção inválida");
             CharRepeat();
 
             return -1;
@@ -155,7 +155,7 @@ class Program
             catch
             {
                 CharRepeat();
-                Console.WriteLine("\nopção inválida");
+                Console.WriteLine("\nErro: opção inválida");
                 CharRepeat();
             }
         }
@@ -194,7 +194,7 @@ class Program
             catch
             {
                 CharRepeat();
-                Console.WriteLine("\nopção inválida");
+                Console.WriteLine("\nErro: opção inválida");
                 CharRepeat();
             }
         }
@@ -233,7 +233,7 @@ class Program
             catch
             {
                 CharRepeat();
-                Console.WriteLine("\nopção inválida");
+                Console.WriteLine("\nErro: opção inválida");
                 CharRepeat();
             }
         }
@@ -324,25 +324,47 @@ class Program
         Console.WriteLine($"{CharRepeat(13)} Dados da pontuação {CharRepeat(13)}");
         Console.WriteLine();
 
-        Console.Write("Id do jogo: ");
-        idGame = int.Parse(Console.ReadLine());
+        try 
+        {
+            Console.Write("Id do jogo: ");
+            idGame = int.Parse(Console.ReadLine());
+            
+            if (!(Sistema.GameIn(idGame))) throw new Exception("\nErro: jogo não encontrado");
 
-        Console.Write("Id do jogador: ");
-        idUser = int.Parse(Console.ReadLine());
+            Console.Write("Id do jogador: ");
+            idUser = int.Parse(Console.ReadLine());
 
-        Console.Write("Data: ");
-        data = DateTime.Parse(Console.ReadLine());
+            if (!(Sistema.PlayerIn(idUser))) throw new Exception("\nErro: jogador não encontrado");
 
-        Console.Write("Nivel: ");
-        nivel = int.Parse(Console.ReadLine());
+            Console.Write("Data: ");
+            data = DateTime.Parse(Console.ReadLine());
 
-        Console.Write("Pontuação: ");
-        pontos = double.Parse(Console.ReadLine());
+            Console.Write("Nivel: ");
+            nivel = int.Parse(Console.ReadLine());
 
-        Score obj = new Score(nivel, idGame, idUser, pontos, data);
-        Sistema.ScoreInserir(obj);
+            Console.Write("Pontuação: ");
+            pontos = double.Parse(Console.ReadLine());
 
-        CharRepeat();
+            Score obj = new Score(nivel, idGame, idUser, pontos, data);
+            Sistema.ScoreInserir(obj);
+
+            Console.WriteLine("\nprocesso finalizado");
+            CharRepeat();
+        }
+
+        catch (FormatException)
+        {
+            CharRepeat();
+            Console.WriteLine("\nErro: valor inválido");
+            CharRepeat();
+            CadastrarScore();
+        }
+
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            CharRepeat();
+        }
     }
 
     public static void AtualizarGame()
@@ -381,6 +403,8 @@ class Program
             Game game = new Game(id, nome, genero, niveis);
             Sistema.GameAtualizar(game);
         }
+
+        else Console.WriteLine("\nErro: jogo não encontrado");
 
         CharRepeat();
     }
@@ -480,6 +504,8 @@ class Program
             Game obj = new Game(id, "", "", 0);
             Sistema.GameExcluir(obj);
         }
+
+        else Console.WriteLine("\nErro: jogo não encontrado");
 
         CharRepeat();
     }
