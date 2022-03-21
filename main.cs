@@ -254,23 +254,33 @@ class Program
         Console.WriteLine($"{CharRepeat(16)} Dados do Jogo {CharRepeat(15)}");
         Console.WriteLine();
 
-        Console.Write("Id: ");
-        id = int.Parse(Console.ReadLine());
+        try 
+        {
+            Console.Write("Id: ");
+            id = int.Parse(Console.ReadLine());
 
-        Console.Write("Nome: ");
-        nome = Console.ReadLine();
+            Console.Write("Nome: ");
+            nome = Console.ReadLine();
 
-        Console.Write("Gênero: ");
-        genero = Console.ReadLine();
+            Console.Write("Gênero: ");
+            genero = Console.ReadLine();
 
-        Console.Write("Qtd. de níveis: ");
-        niveis = int.Parse(Console.ReadLine());
+            Console.Write("Qtd. de níveis: ");
+            niveis = int.Parse(Console.ReadLine());
 
-        Game obj = new Game(id, nome, genero, niveis);
-        Sistema.GameInserir(obj);
+            Game obj = new Game(id, nome, genero, niveis);
+            Sistema.GameInserir(obj);
 
-        Console.WriteLine("\nprocesso finalizado");
-        CharRepeat();
+            Console.WriteLine("\nprocesso finalizado");
+            CharRepeat();
+        }
+
+        catch
+        {
+            CharRepeat();
+            Console.WriteLine("\nErro: valor inválido");
+            CadastrarGame();
+        }
     }
 
     public static void CadastrarUser()
