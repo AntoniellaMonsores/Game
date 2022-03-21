@@ -38,7 +38,7 @@ class Sistema {
 
     public static bool ScoreIn(int id, int idGame, int idUser)
     {
-        // Verificar se um jogador está cadastrado
+        // Verificar se uma pontuação está cadastrada
 
         try 
         {
