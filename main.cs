@@ -110,7 +110,7 @@ class Program
             else return func;
         }
 
-        catch
+        catch (ArgumentOutOfRangeException)
         {
             CharRepeat();
             Console.WriteLine("\nErro: opção inválida");
@@ -277,7 +277,6 @@ class Program
 
         catch
         {
-            CharRepeat();
             Console.WriteLine("\nErro: valor inválido");
             CadastrarGame();
         }
