@@ -36,13 +36,13 @@ class Sistema {
         catch { return false; }
     }
 
-    public static bool ScoreIn(int id, int idGame, int idUser)
+    public static bool ScoreIn(int id, int idGame, int idPlayer)
     {
         // Verificar se uma pontuação está cadastrada
 
         try 
         {
-            ScoreListar(id, idGame, idUser);
+            ScoreListar(id, idGame, idPlayer);
             return true;
         }
 
@@ -205,7 +205,7 @@ class Sistema {
         if (score[ind] != null) score.RemoveAt(ind);
     }
 
-    public static List<Score> ScoreListar(int idGame, int idUser)
+    public static List<Score> ScoreListar(int idGame, int idPlayer)
     {
         // Retorno dos elementos da lista de pontos
         // Criação de uma lista auxiliar
@@ -215,19 +215,19 @@ class Sistema {
         
         foreach (Score obj in score)
         {
-            if (obj.GetGameId() == idGame && obj.GetUserId() == idUser) aux.Add(obj);
+            if (obj.GetGameId() == idGame && obj.GetPlayerId() == idPlayer) aux.Add(obj);
         }
         
         aux.Sort();
         return aux;
     }
 
-    public static Score ScoreListar(int id, int idGame, int idUser)
+    public static Score ScoreListar(int id, int idGame, int idPlayer)
     {
         // Retorno de um elemento específico da lista de pontos
         // Cada pontuação está associada a um jogo e jogador específicos
         
-        Score obj = ScoreListar(idGame, idUser)[id];
+        Score obj = ScoreListar(idGame, idPlayer)[id];
 
         if (obj != null) return obj;
 

@@ -48,7 +48,7 @@ class Score : IComparable {
         return idGame;
     }
     
-    public int GetUserId() {
+    public int GetPlayerId() {
         return idPlayer;
     }
     
