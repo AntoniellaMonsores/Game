@@ -5,17 +5,17 @@ class Score : IComparable {
 
     private int nivel;
     private int idGame;
-    private int idUser;
+    private int idPlayer;
     private double pontos;
     private DateTime data;
 
-    public Score(int nivel, int idGame, int idUser, double pontos, DateTime data)
+    public Score(int nivel, int idGame, int idPlayer, double pontos, DateTime data)
     {
         // Construtor da classe
         
         this.nivel = nivel;
         this.idGame = idGame;
-        this.idUser = idUser;
+        this.idPlayer = idPlayer;
         this.pontos = pontos;
         this.data = data;
     }
@@ -28,8 +28,8 @@ class Score : IComparable {
         if (idGame >= 0) this.idGame = idGame;
     }
     
-    public void SetUserId(int idUser) {
-        if (idUser >= 0) this.idUser = idUser;
+    public void SetUserId(int idPlayer) {
+        if (idUser >= 0) this.idPlayer = idPlayer;
     }
 
     public void SetPontos(double pontos) {
@@ -49,7 +49,7 @@ class Score : IComparable {
     }
     
     public int GetUserId() {
-        return idUser;
+        return idPlayer;
     }
     
     public double GetPontos() {

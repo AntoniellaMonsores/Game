@@ -20,7 +20,7 @@ class Program
         Console.WriteLine($"\n{CharRepeat(46)}");
     }
 
-    public static void Main(string[] args)
+    public static void Main()
     {
         // Classe Main
         // Determinação dos "serviços" a serem prestados
@@ -120,6 +120,82 @@ class Program
         }
     }
 
+    public static void MenuGame()
+    {
+        // Usado em classes referentes ao jogo
+        // Possibilita a visualização dos jogos cadastrados
+
+        int func = 0;
+
+        do
+        {
+            Console.WriteLine();
+            Console.WriteLine("00 - Lembrar jogos cadastrados");
+            Console.WriteLine("01 - Continuar");
+            Console.WriteLine();
+
+            try
+            {
+                func = int.Parse(Console.ReadLine());
+
+                switch (func)
+                {
+                    case 0:
+                        ListarGames();
+                        break;
+                    case 1: break;
+                    default: throw new ArgumentOutOfRangeException(); 
+                }
+            }
+
+            catch
+            {
+                Console.WriteLine("\nErro: opção inválida");
+                CharRepeat();
+            }
+        }
+
+        while (func != 1);
+    }
+
+    public static void MenuPlayer()
+    {
+        // Usado em classes referentes ao jogador
+        // Possibilita a visualização dos jogadores cadastrados
+
+        int func = 0;
+
+        do
+        {
+            Console.WriteLine();
+            Console.WriteLine("00 - Lembrar jogadores cadastrados");
+            Console.WriteLine("01 - Continuar");
+            Console.WriteLine();
+
+            try 
+            {
+                func = int.Parse(Console.ReadLine());
+
+                switch (func)
+                {
+                    case 0:
+                        ListarUsers();
+                        break;
+                    case 1: break;
+                    default: throw new ArgumentOutOfRangeException();
+                }
+            }
+
+            catch
+            {
+                Console.WriteLine("\nErro: opção inválida");
+                CharRepeat();
+            }
+        }
+
+        while (func != 1);
+    }
+    
     public static void MenuScore()
     {
         // Usado em classes referentes ao score
@@ -160,82 +236,6 @@ class Program
         }
 
         while (func != 2);
-    }
-
-    public static void MenuGame()
-    {
-        // Usado em classes referentes ao jogo
-        // Possibilita a visualização dos jogos cadastrados
-
-        int func = 0;
-
-        do
-        {
-            Console.WriteLine();
-            Console.WriteLine("00 - Lembrar jogos cadastrados");
-            Console.WriteLine("01 - Continuar");
-            Console.WriteLine();
-
-            try
-            {
-                func = int.Parse(Console.ReadLine());
-
-                switch (func)
-                {
-                    case 0:
-                        ListarGames();
-                        break;
-                    case 1: break;
-                    default: throw new ArgumentOutOfRangeException(); 
-                }
-            }
-
-            catch
-            {
-                Console.WriteLine("\nErro: opção inválida");
-                CharRepeat();
-            }
-        }
-
-        while (func != 1);
-    }
-
-    public static void MenuUser()
-    {
-        // Usado em classes referentes ao jogador
-        // Possibilita a visualização dos jogadores cadastrados
-
-        int func = 0;
-
-        do
-        {
-            Console.WriteLine();
-            Console.WriteLine("00 - Lembrar jogadores cadastrados");
-            Console.WriteLine("01 - Continuar");
-            Console.WriteLine();
-
-            try 
-            {
-                func = int.Parse(Console.ReadLine());
-
-                switch (func)
-                {
-                    case 0:
-                        ListarUsers();
-                        break;
-                    case 1: break;
-                    default: throw new ArgumentOutOfRangeException();
-                }
-            }
-
-            catch
-            {
-                Console.WriteLine("\nErro: opção inválida");
-                CharRepeat();
-            }
-        }
-
-        while (func != 1);
     }
 
     public static void CadastrarGame()
@@ -299,7 +299,7 @@ class Program
         }
     }
 
-    public static void CadastrarUser()
+    public static void CadastrarPlayer()
     {
         // Cadastro de jogadores (ou usuários)
 
@@ -342,7 +342,7 @@ class Program
 
         int nivel;
         int idGame;
-        int idUser;
+        int idPlayer;
         double pontos;
         DateTime data;
         Game[] games = Sistema.GameListar();
@@ -361,10 +361,10 @@ class Program
             if (!Sistema.GameIn(idGame)) throw new Exception("\nErro: jogo não encontrado");
             
             Console.Write("Id do jogador: ");
-            idUser = int.Parse(Console.ReadLine());
+            idPlayer = int.Parse(Console.ReadLine());
 
             // Procurar jogador no sistema
-            if (!Sistema.PlayerIn(idUser)) throw new Exception("\nErro: jogador não encontrado");
+            if (!Sistema.PlayerIn(idPlayer)) throw new Exception("\nErro: jogador não encontrado");
 
             Console.Write("Data: ");
             data = DateTime.Parse(Console.ReadLine());
@@ -455,7 +455,7 @@ class Program
         } 
     }
 
-    public static void AtualizarUser()
+    public static void AtualizarPlayer()
     {
         // Permite a mudança dos dados referentes a um jogador
         // O id não será alterado
@@ -575,7 +575,7 @@ class Program
         } 
     }
 
-    public static void ExcluirUser()
+    public static void ExcluirPlayer()
     {
         // Resulta na exclusão do jogador
         // O id deve ser informado
@@ -632,7 +632,7 @@ class Program
         }
     }
 
-    public static void ListarGames()
+    public static void ListarGame()
     {
         // Listagem de todos os jogos cadastrados
 
@@ -657,7 +657,7 @@ class Program
         CharRepeat();
     }
 
-    public static void ListarUsers()
+    public static void ListarPlayer()
     {
         // Listagem de todos os jogadores cadastrados
 
@@ -688,7 +688,7 @@ class Program
         // Listagem das pontuações associados a um jogo e jogador específicos
 
         int idGame;
-        int idUser;
+        int idPlayer;
 
         MenuScore();
 
@@ -698,7 +698,7 @@ class Program
         idGame = int.Parse(Console.ReadLine());
            
         Console.Write("Id do jogador: ");
-        idUser = int.Parse(Console.ReadLine());
+        idPlayer = int.Parse(Console.ReadLine());
             
         List<Score> score = Sistema.ScoreListar(idGame, idUser);
 
@@ -720,7 +720,7 @@ class Program
 
         CharRepeat(); 
 
-        int[] valores = { idGame, idUser };
+        int[] valores = { idGame, idPlayer };
 
         return valores;
     }
