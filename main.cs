@@ -110,7 +110,7 @@ class Program
             else return func;
         }
 
-        catch (ArgumentOutOfRangeException)
+        catch
         {
             Console.WriteLine("\nErro: opção inválida");
             CharRepeat();
@@ -553,27 +553,44 @@ class Program
         CharRepeat();
         Console.WriteLine();
 
-        Console.Write("Id da pontuação: ");
-        id = int.Parse(Console.ReadLine());
+        try 
+        {
+            Console.Write("Id da pontuação: ");
+            id = int.Parse(Console.ReadLine());
+    
+            Console.WriteLine();
+            Console.WriteLine("Novos dados");
+            Console.WriteLine();
+    
+            Console.Write("Nivel: ");
+            nivel = int.Parse(Console.ReadLine());
+    
+            Console.Write("Pontuação: ");
+            pontos = double.Parse(Console.ReadLine());
+    
+            Console.Write("Data: ");
+            data = DateTime.Parse(Console.ReadLine());
+    
+            Score obj = new Score(nivel, valores[0], valores[1], pontos, data);
+            Sistema.ScoreAtualizar(id, obj);
+    
+            Console.WriteLine("\noperação concluída");
+            CharRepeat();
+        }
 
-        Console.WriteLine();
-        Console.WriteLine("Novos dados");
-        Console.WriteLine();
+        catch (FormatException)
+        {
+            Console.WriteLine("\nErro: valor inválido");
+            CharRepeat();
+            CadastrarScore();
+        }
 
-        Console.Write("Nivel: ");
-        nivel = int.Parse(Console.ReadLine());
-
-        Console.Write("Pontuação: ");
-        pontos = double.Parse(Console.ReadLine());
-
-        Console.Write("Data: ");
-        data = DateTime.Parse(Console.ReadLine());
-
-        Score obj = new Score(nivel, valores[0], valores[1], pontos, data);
-        Sistema.ScoreAtualizar(id, obj);
-
-        Console.WriteLine("\noperação concluída");
-        CharRepeat();
+        catch (Exception e)
+        {
+            // Checar se há algum outro erro - até então desconhecido
+            Console.WriteLine($"\nErro: {e.Message}");
+            CharRepeat();
+        }
     }
 
     public static void ExcluirGame()
@@ -755,37 +772,60 @@ class Program
         int idPlayer;
 
         MenuScore();
-
         Console.WriteLine();
 
-        Console.Write("Id do jogo: ");
-        idGame = int.Parse(Console.ReadLine());
-           
-        Console.Write("Id do jogador: ");
-        idPlayer = int.Parse(Console.ReadLine());
+        try
+        {
+            Console.Write("Id do jogo: ");
+            idGame = int.Parse(Console.ReadLine());
             
-        List<Score> score = Sistema.ScoreListar(idGame, idPlayer);
-
-        CharRepeat();
-        Console.WriteLine();
-
-        if (score.Count == 0)
-        {
-            Console.WriteLine("não há pontuações cadastradas");
-        }
-
-        else 
-        {
-            for (int i = 0; i < score.Count; i++)
+            // Procurar jogo no sistema
+            if (!Sistema.GameIn(idGame)) throw new Exception("jogo não encontrado");
+               
+            Console.Write("Id do jogador: ");
+            idPlayer = int.Parse(Console.ReadLine());
+    
+            // Procurar jogador no sistema
+            if (!Sistema.PlayerIn(idPlayer)) throw new Exception("jogador não encontrado");
+            
+            List<Score> score = Sistema.ScoreListar(idGame, idPlayer);
+    
+            CharRepeat();
+            Console.WriteLine();
+    
+            if (score.Count == 0)
             {
-                Console.WriteLine($"{i:000} - {score[i]}");
+                Console.WriteLine("não há pontuações cadastradas");
             }
+    
+            else 
+            {
+                for (int i = 0; i < score.Count; i++)
+                {
+                    Console.WriteLine($"{i:000000} - {score[i]}");
+                }
+            }
+    
+            CharRepeat(); 
+    
+            int[] valores = { idGame, idPlayer };
+            return valores;
         }
 
-        CharRepeat(); 
+        catch (FormatException)
+        {
+            CharRepeat();
+            Console.WriteLine("\nErro: valor inválido");
+            CharRepeat();
+            ListarScore();
+        }
 
-        int[] valores = { idGame, idPlayer };
+        catch (Exception e)
+        {
+            Console.WriteLine($"\nErro: {e.Message}");
+            CharRepeat();
+        }
 
-        return valores;
+        return null;
     }
 }
