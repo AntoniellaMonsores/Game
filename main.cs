@@ -14,7 +14,7 @@ class Program
 
     public static void CharRepeat()
     {
-        // Chamada do método 'CharRepeat(int n)' com valor fixo de 'n'
+        // Chamada do método "CharRepeat(int n)" com valor fixo de "n"
 
         Console.WriteLine($"\n{CharRepeat(46)}");
     }
@@ -112,7 +112,6 @@ class Program
 
         catch (ArgumentOutOfRangeException)
         {
-            CharRepeat();
             Console.WriteLine("\nErro: opção inválida");
             CharRepeat();
 
@@ -154,7 +153,6 @@ class Program
 
             catch
             {
-                CharRepeat();
                 Console.WriteLine("\nErro: opção inválida");
                 CharRepeat();
             }
@@ -193,7 +191,6 @@ class Program
 
             catch
             {
-                CharRepeat();
                 Console.WriteLine("\nErro: opção inválida");
                 CharRepeat();
             }
@@ -232,7 +229,6 @@ class Program
 
             catch
             {
-                CharRepeat();
                 Console.WriteLine("\nErro: opção inválida");
                 CharRepeat();
             }
@@ -244,6 +240,7 @@ class Program
     public static void CadastrarGame()
     {
         // Cadastro de jogos
+        // Erros: erros de digitação, id ou nome informado já possui cadastro
 
         int id;
         int niveis;
@@ -256,11 +253,20 @@ class Program
 
         try 
         {
+            Game[] games = Sistema.GameListar();
+
             Console.Write("Id: ");
             id = int.Parse(Console.ReadLine());
 
+            // Procurar id no sistema
+            if (Sistema.GameIn(id)) throw new Exception("Erro: id já cadastrado");
+
             Console.Write("Nome: ");
             nome = Console.ReadLine();
+
+            // Procurar nome no sistema
+            int checar = Array.FindIndex(games, x => x.GetNome() == nome);
+            if (checar != -1) throw new Exception("Erro: jogo já cadastrado");
 
             Console.Write("Gênero: ");
             genero = Console.ReadLine();
@@ -275,10 +281,20 @@ class Program
             CharRepeat();
         }
 
-        catch
+        catch (FormatException)
         {
+            // São considerados erros de digitação aquilo que não correspondem ao tipo da variável
+            // Considera-se que o usuário reconhecerá o erro sem maiores informações
+            // O usuário retorna ao menu de cadastro
+
             Console.WriteLine("\nErro: valor inválido");
             CadastrarGame();
+        }
+
+        catch (Exception e)
+        {
+            Console.WriteLine($"\n{e.Message}");
+            CharRepeat();
         }
     }
 
@@ -330,7 +346,6 @@ class Program
         DateTime data;
 
         MenuScore();
-
         Console.WriteLine();
         Console.WriteLine($"{CharRepeat(13)} Dados da pontuação {CharRepeat(13)}");
         Console.WriteLine();
@@ -340,13 +355,13 @@ class Program
             Console.Write("Id do jogo: ");
             idGame = int.Parse(Console.ReadLine());
             
-            // Verificar se o jogo está cadastrado no Sistema
+            // Procurar jogo no sistema
             if (!Sistema.GameIn(idGame)) throw new Exception("\nErro: jogo não encontrado");
-
+            
             Console.Write("Id do jogador: ");
             idUser = int.Parse(Console.ReadLine());
-            
-            // Verificar se o jogador está cadastrado no Sistema
+
+            // Procurar jogador no sistema
             if (!Sistema.PlayerIn(idUser)) throw new Exception("\nErro: jogador não encontrado");
 
             Console.Write("Data: ");
@@ -367,7 +382,6 @@ class Program
 
         catch (FormatException)
         {
-            CharRepeat();
             Console.WriteLine("\nErro: valor inválido");
             CharRepeat();
             CadastrarScore();
@@ -392,14 +406,15 @@ class Program
 
         MenuGame();
         CharRepeat();
-
         Console.WriteLine();
         
-        Console.Write("Id do jogo: ");
-        id = int.Parse(Console.ReadLine());
-
-        if (Sistema.GameIn(id))
+        try 
         {
+            Console.Write("Id do jogo: ");
+            id = int.Parse(Console.ReadLine());
+
+            if (!Sistema.GameIn(id)) throw new Exception("\nErro: jogo não encontrado");
+            
             Console.WriteLine();
             Console.WriteLine("Novos dados");
             Console.WriteLine();
@@ -417,11 +432,21 @@ class Program
             Sistema.GameAtualizar(game);
 
             Console.WriteLine("\nprocesso finalizado");
+            CharRepeat();
         }
 
-        else Console.WriteLine("\nErro: jogo não encontrado");
+        catch (FormatException)
+        {
+            Console.WriteLine("\nErro: valor inválido");
+            CharRepeat();
+            CadastrarScore();
+        }
 
-        CharRepeat();
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            CharRepeat();
+        } 
     }
 
     public static void AtualizarUser()
@@ -521,25 +546,27 @@ class Program
     
             id = int.Parse(Console.ReadLine());
     
-            if (Sistema.GameIn(id)) 
-            {
-                Game obj = new Game(id, "", "", 0);
-                Sistema.GameExcluir(obj);
-                Console.WriteLine("\nprocesso finalizado");
-            }
+            if (!Sistema.GameIn(id)) throw new Exception("\nErro: jogo não encontrado");
+            
+            Game obj = new Game(id, "", "", 0);
+            Sistema.GameExcluir(obj);
+            Console.WriteLine("\nprocesso finalizado");
     
-            else Console.WriteLine("\nErro: jogo não encontrado");
-
             CharRepeat();
         }
 
-        catch 
-        { 
-            CharRepeat();
+        catch (FormatException)
+        {
             Console.WriteLine("\nErro: valor inválido");
             CharRepeat();
-            ExcluirGame();
+            CadastrarScore();
         }
+
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            CharRepeat();
+        } 
     }
 
     public static void ExcluirUser()
@@ -553,7 +580,6 @@ class Program
 
         Console.WriteLine();
         Console.Write("Id do jogador: ");
-
         id = int.Parse(Console.ReadLine());
 
         Player obj = new Player(id, 0, "", "", "");
@@ -569,7 +595,7 @@ class Program
         // Resulta na exclusão do score informado
 
         int id;
-        int[] valores = ListarScore();
+        int[] v = ListarScore();
 
         try 
         {
@@ -577,8 +603,9 @@ class Program
             Console.Write("Id da pontuação: ");
             id = int.Parse(Console.ReadLine());
             
-            if (!Sistema.ScoreIn(id, valores[0], valores[1])) throw new Exception("\nErro: pontuação não encontrada");
-            Sistema.ScoreExcluir(Sistema.ScoreListar(id, valores[0], valores[1]));
+            if (!Sistema.ScoreIn(id, v[0], v[1])) throw new Exception("\nErro: pontuação não encontrada");
+            
+            Sistema.ScoreExcluir(Sistema.ScoreListar(id, val[0], val[1]));
 
             Console.WriteLine("\nprocesso finalizado");
             CharRepeat();
@@ -692,4 +719,3 @@ class Program
         return valores;
     }
 }
-
