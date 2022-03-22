@@ -259,14 +259,14 @@ class Program
             id = int.Parse(Console.ReadLine());
 
             // Procurar id no sistema
-            if (Sistema.GameIn(id)) throw new Exception("Erro: id já cadastrado");
+            if (Sistema.GameIn(id)) throw new Exception("id já cadastrado");
 
             Console.Write("Nome: ");
             nome = Console.ReadLine();
 
             // Procurar nome no sistema
             int checar = Array.FindIndex(games, x => x.GetNome() == nome);
-            if (checar != -1) throw new Exception("Erro: jogo já cadastrado");
+            if (checar != -1) throw new Exception("jogo já cadastrado");
 
             Console.Write("Gênero: ");
             genero = Console.ReadLine();
@@ -293,7 +293,7 @@ class Program
 
         catch (Exception e)
         {
-            Console.WriteLine($"\n{e.Message}");
+            Console.WriteLine($"\nErro: {e.Message}");
             CharRepeat();
         }
     }
@@ -318,7 +318,7 @@ class Program
             id = int.Parse(Console.ReadLine());
 
             // Procurar id no sistema
-            if (Sistema.PlayerIn(id)) throw new Exception("Erro: id já cadastrado");
+            if (Sistema.PlayerIn(id)) throw new Exception("id já cadastrado");
 
             Console.Write("Idade: ");
             idade = int.Parse(Console.ReadLine());
@@ -347,7 +347,7 @@ class Program
 
         catch (Exception e)
         {
-            Console.WriteLine($"\n{e.Message}");
+            Console.WriteLine($"\nErro: {e.Message}");
             CharRepeat();
         }
     }
@@ -375,13 +375,13 @@ class Program
             idGame = int.Parse(Console.ReadLine());
             
             // Procurar jogo no sistema
-            if (!Sistema.GameIn(idGame)) throw new Exception("\nErro: jogo não encontrado");
+            if (!Sistema.GameIn(idGame)) throw new Exception("jogo não encontrado");
             
             Console.Write("Id do jogador: ");
             idPlayer = int.Parse(Console.ReadLine());
 
             // Procurar jogador no sistema
-            if (!Sistema.PlayerIn(idPlayer)) throw new Exception("\nErro: jogador não encontrado");
+            if (!Sistema.PlayerIn(idPlayer)) throw new Exception("jogador não encontrado");
 
             Console.Write("Data: ");
             data = DateTime.Parse(Console.ReadLine());
@@ -394,7 +394,7 @@ class Program
             
             if (nivel < 0 || nivel > games[i].GetNiveis()) 
             {
-                throw new Exception($"\nErro: o jogo informado não possui o nível {nivel}");
+                throw new Exception($"o jogo informado não possui o nível {nivel}");
             }
 
             Console.Write("Pontuação: ");
@@ -416,7 +416,7 @@ class Program
 
         catch (Exception e)
         {
-            Console.WriteLine(e.Message);
+            Console.WriteLine($"\nErro: {e.Message}");
             CharRepeat();
         }
     }
@@ -441,7 +441,7 @@ class Program
             id = int.Parse(Console.ReadLine());
 
             // Procurar id no sistema
-            if (!Sistema.GameIn(id)) throw new Exception("\nErro: jogo não encontrado");
+            if (!Sistema.GameIn(id)) throw new Exception("jogo não encontrado");
             
             Console.WriteLine();
             Console.WriteLine("Novos dados");
@@ -472,7 +472,7 @@ class Program
 
         catch (Exception e)
         {
-            Console.WriteLine(e.Message);
+            Console.WriteLine($"\nErro: {e.Message}");
             CharRepeat();
         } 
     }
@@ -498,7 +498,7 @@ class Program
             id = int.Parse(Console.ReadLine());
 
             // Procurar id no sistema
-            if (!Sistema.PlayerIn(id)) throw new Exception("\nErro: jogador não encontrado");
+            if (!Sistema.PlayerIn(id)) throw new Exception("jogador não encontrado");
 
             Console.WriteLine();
             Console.WriteLine("Novos dados");
@@ -532,7 +532,7 @@ class Program
 
         catch (Exception e)
         {
-            Console.WriteLine(e.Message);
+            Console.WriteLine($"\nErro: {e.Message}");
             CharRepeat();
         } 
     }
@@ -595,7 +595,7 @@ class Program
             id = int.Parse(Console.ReadLine());
     
             // Procurar id no sistema
-            if (!Sistema.GameIn(id)) throw new Exception("\nErro: jogo não encontrado");
+            if (!Sistema.GameIn(id)) throw new Exception("jogo não encontrado");
             
             Game obj = new Game(id, "", "", 0);
             Sistema.GameExcluir(obj);
@@ -613,7 +613,7 @@ class Program
 
         catch (Exception e)
         {
-            Console.WriteLine(e.Message);
+            Console.WriteLine($"\nErro: {e.Message}");
             CharRepeat();
         } 
     }
@@ -635,7 +635,7 @@ class Program
             id = int.Parse(Console.ReadLine());
 
             // Procurar id no sistema
-            if (!Sistema.PlayerIn(id)) throw new Exception("\nErro: jogador não encontrado");
+            if (!Sistema.PlayerIn(id)) throw new Exception("jogador não encontrado");
 
             Player obj = new Player(id, 0, "", "", "");
             Sistema.PlayerExcluir(obj);
@@ -653,7 +653,7 @@ class Program
 
         catch (Exception e)
         {
-            Console.WriteLine(e.Message);
+            Console.WriteLine($"\nErro: {e.Message}");
             CharRepeat();
         } 
     }
@@ -673,7 +673,7 @@ class Program
             id = int.Parse(Console.ReadLine());
             
             // Procurar pontuação no sistema
-            if (!Sistema.ScoreIn(id, v[0], v[1])) throw new Exception("\nErro: pontuação não encontrada");
+            if (!Sistema.ScoreIn(id, v[0], v[1])) throw new Exception("pontuação não encontrada");
             
             Sistema.ScoreExcluir(Sistema.ScoreListar(id, v[0], v[1]));
 
@@ -691,7 +691,7 @@ class Program
 
         catch (Exception e)
         {
-            Console.WriteLine(e.Message);
+            Console.WriteLine($"\nErro: {e.Message}");
             CharRepeat();
         }
     }
