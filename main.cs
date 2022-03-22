@@ -39,7 +39,7 @@ class Program
                     CadastrarGame();
                     break;
                 case 2:
-                    CadastrarUser();
+                    CadastrarPlayer();
                     break;
                 case 3:
                     CadastrarScore();
@@ -48,7 +48,7 @@ class Program
                     AtualizarGame();
                     break;
                 case 5:
-                    AtualizarUser();
+                    AtualizarPlayer();
                     break;
                 case 6:
                     AtualizarScore();
@@ -57,16 +57,16 @@ class Program
                     ExcluirGame();
                     break;
                 case 8:
-                    ExcluirUser();
+                    ExcluirPlayer();
                     break;
                 case 9:
                     ExcluirScore();
                     break;
                 case 10:
-                    ListarGames();
+                    ListarGame();
                     break;
                 case 11:
-                    ListarUsers();
+                    ListarPlayer();
                     break;
                 case 12:
                     ListarScore();
@@ -140,7 +140,7 @@ class Program
                 switch (func)
                 {
                     case 0:
-                        ListarGames();
+                        ListarGame();
                         break;
                     case 1: break;
                     default: throw new ArgumentOutOfRangeException(); 
@@ -178,7 +178,7 @@ class Program
                 switch (func)
                 {
                     case 0:
-                        ListarUsers();
+                        ListarPlayer();
                         break;
                     case 1: break;
                     default: throw new ArgumentOutOfRangeException();
@@ -217,10 +217,10 @@ class Program
                 switch (func)
                 {
                     case 0:
-                        ListarGames();
+                        ListarGame();
                         break;
                     case 1:
-                        ListarUsers();
+                        ListarPlayer();
                         break;
                     case 2: break;
                     default: throw new ArgumentOutOfRangeException(); 
@@ -277,7 +277,7 @@ class Program
             Game obj = new Game(id, nome, genero, niveis);
             Sistema.GameInserir(obj);
 
-            Console.WriteLine("\nprocesso finalizado");
+            Console.WriteLine("\noperação concluída");
             CharRepeat();
         }
 
@@ -330,7 +330,7 @@ class Program
         Player obj = new Player(id, idade, apelido, nome, email);
         Sistema.PlayerInserir(obj);
 
-        Console.WriteLine("\nprocesso finalizado");
+        Console.WriteLine("\noperação concluída");
         CharRepeat();
     }
 
@@ -373,15 +373,19 @@ class Program
 
             // Verificar nível
             int i = Array.FindIndex(games, x => x.GetId() == idGame);
-            if (nivel > games[i].GetNiveis()) throw new Exception($"\nErro: o jogo informado não possui o nível {nivel}");
+            
+            if (nivel < 0 || nivel > games[i].GetNiveis()) 
+            {
+                throw new Exception($"\nErro: o jogo informado não possui o nível {nivel}");
+            }
 
             Console.Write("Pontuação: ");
             pontos = double.Parse(Console.ReadLine());
 
-            Score obj = new Score(nivel, idGame, idUser, pontos, data);
+            Score obj = new Score(nivel, idGame, idPlayer, pontos, data);
             Sistema.ScoreInserir(obj);
 
-            Console.WriteLine("\nprocesso finalizado");
+            Console.WriteLine("\noperação concluída");
             CharRepeat();
         }
 
@@ -436,7 +440,7 @@ class Program
             Game game = new Game(id, nome, genero, niveis);
             Sistema.GameAtualizar(game);
 
-            Console.WriteLine("\nprocesso finalizado");
+            Console.WriteLine("\noperação concluída");
             CharRepeat();
         }
 
@@ -465,7 +469,7 @@ class Program
         string email;
         string apelido;
 
-        MenuUser();
+        MenuPlayer();
 
         Console.WriteLine();
         Console.Write("Id do jogador: ");
@@ -490,7 +494,7 @@ class Program
         Player obj = new Player(id, idade, apelido, nome, email);
         Sistema.PlayerAtualizar(obj);
 
-        Console.WriteLine("\nprocesso finalizado");
+        Console.WriteLine("\noperação concluída");
         CharRepeat();
     }
 
@@ -529,7 +533,7 @@ class Program
         Score obj = new Score(nivel, valores[0], valores[1], pontos, data);
         Sistema.ScoreAtualizar(id, obj);
 
-        Console.WriteLine("\nprocesso finalizado");
+        Console.WriteLine("\noperação concluída");
         CharRepeat();
     }
 
@@ -555,7 +559,7 @@ class Program
             
             Game obj = new Game(id, "", "", 0);
             Sistema.GameExcluir(obj);
-            Console.WriteLine("\nprocesso finalizado");
+            Console.WriteLine("\noperação concluída");
     
             CharRepeat();
         }
@@ -581,7 +585,7 @@ class Program
 
         int id;
 
-        MenuUser();
+        MenuPlayer();
 
         Console.WriteLine();
         Console.Write("Id do jogador: ");
@@ -590,7 +594,7 @@ class Program
         Player obj = new Player(id, 0, "", "", "");
         Sistema.PlayerExcluir(obj);
 
-        Console.WriteLine("\nprocesso finalizado");
+        Console.WriteLine("\noperação concluída");
         CharRepeat();
     }
 
@@ -610,9 +614,9 @@ class Program
             
             if (!Sistema.ScoreIn(id, v[0], v[1])) throw new Exception("\nErro: pontuação não encontrada");
             
-            Sistema.ScoreExcluir(Sistema.ScoreListar(id, val[0], val[1]));
+            Sistema.ScoreExcluir(Sistema.ScoreListar(id, v[0], v[1]));
 
-            Console.WriteLine("\nprocesso finalizado");
+            Console.WriteLine("\noperação concluída");
             CharRepeat();
         }
 
@@ -699,7 +703,7 @@ class Program
         Console.Write("Id do jogador: ");
         idPlayer = int.Parse(Console.ReadLine());
             
-        List<Score> score = Sistema.ScoreListar(idGame, idUser);
+        List<Score> score = Sistema.ScoreListar(idGame, idPlayer);
 
         CharRepeat();
         Console.WriteLine();

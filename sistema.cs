@@ -184,14 +184,14 @@ class Sistema {
         // Atualização de informações referentes a uma pontuação
         // O método recebe o id (índice) do score e o objeto em si
  
-        Score aux = ScoreListar(obj.GetGameId(), obj.GetUserId())[id];
+        Score aux = ScoreListar(obj.GetGameId(), obj.GetPlayerId())[id];
         
         if (aux != null) 
         {
             aux.SetData(obj.GetData());
             aux.SetNivel(obj.GetNivel());
             aux.SetGameId(obj.GetGameId());
-            aux.SetUserId(obj.GetUserId());
+            aux.SetPlayerId(obj.GetPlayerId());
             aux.SetPontos(obj.GetPontos());
         }
     }

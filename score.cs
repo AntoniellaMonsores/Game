@@ -28,8 +28,8 @@ class Score : IComparable {
         if (idGame >= 0) this.idGame = idGame;
     }
     
-    public void SetUserId(int idPlayer) {
-        if (idUser >= 0) this.idPlayer = idPlayer;
+    public void SetPlayerId(int idPlayer) {
+        if (idPlayer >= 0) this.idPlayer = idPlayer;
     }
 
     public void SetPontos(double pontos) {
