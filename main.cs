@@ -283,7 +283,7 @@ class Program
 
         catch (FormatException)
         {
-            // São considerados erros de digitação aquilo que não correspondem ao tipo da variável
+            // São considerados erros de digitação dados que não correspondem ao tipo da variável
             // Considera-se que o usuário reconhecerá o erro sem maiores informações
             // O usuário retorna ao menu de cadastro
 
