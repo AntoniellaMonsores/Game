@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 
+
 class Program
 {
     public static string CharRepeat(int n)
@@ -371,6 +372,7 @@ class Program
             Console.Write("Nivel: ");
             nivel = int.Parse(Console.ReadLine());
 
+            // Verificar nível
             int i = Array.FindIndex(games, x => x.GetId() == idGame);
             if (nivel > games[i].GetNiveis()) throw new Exception($"\nErro: o jogo informado não possui o nível {nivel}");
 
