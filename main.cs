@@ -653,7 +653,7 @@ class Program
 
     public static void ListarUsers()
     {
-        // Listagem de todos os jogadores (ou usuários) cadastrados
+        // Listagem de todos os jogadores cadastrados
 
         List<Player> users = Sistema.PlayerListar();
 
@@ -679,7 +679,7 @@ class Program
 
     public static int[] ListarScore()
     {
-        // Listagem de todos os scores associados a um jogo e jogador específicos
+        // Listagem das pontuações associados a um jogo e jogador específicos
 
         int idGame;
         int idUser;
