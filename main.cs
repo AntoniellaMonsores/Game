@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 
-
 class Program
 {
     public static string CharRepeat(int n)
