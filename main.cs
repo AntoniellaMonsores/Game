@@ -344,6 +344,7 @@ class Program
         int idUser;
         double pontos;
         DateTime data;
+        Game[] games = Sistema.GameListar();
 
         MenuScore();
         Console.WriteLine();
@@ -369,6 +370,9 @@ class Program
 
             Console.Write("Nivel: ");
             nivel = int.Parse(Console.ReadLine());
+
+            int i = Array.FindIndex(games, x => x.GetId() == idGame);
+            if (nivel > games[i].GetNiveis()) throw new Exception($"\nErro: o jogo informado não possui o nível {nivel}");
 
             Console.Write("Pontuação: ");
             pontos = double.Parse(Console.ReadLine());
