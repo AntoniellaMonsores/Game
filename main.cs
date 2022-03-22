@@ -827,5 +827,21 @@ class Program
         }
 
         return null;
+
+      try
+      { 
+        //Passa a tragetoria e o nome do arquivo para o construtor StreamWriter
+        StreamWriter sw = new StreamWriter("teste.txt");
+        string sw = Console.ReadLine();
+        //ler até o fim do arquivo
+        while (string != null)
+        {
+          Console.WriteLine(string);
+          //ler a prox string
+          string = sw.ReadLine();
+        }
+        sw.Close();
+        
+      }
     }
 }
