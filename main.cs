@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Threading;
 
 class Program
 {
@@ -24,6 +26,8 @@ class Program
         // Classe Main
         // Determinação dos "serviços" a serem prestados
 
+        Thread.CurrentThread.CurrentCulture = new CultureInfo("pt-BR");
+        
         int func;
 
         Console.WriteLine($"{CharRepeat(20)} Game {CharRepeat(20)}");
@@ -373,10 +377,10 @@ class Program
         {
             Console.Write("Id do jogo: ");
             idGame = int.Parse(Console.ReadLine());
-            
+
             // Procurar jogo no sistema
             if (!Sistema.GameIn(idGame)) throw new Exception("jogo não encontrado");
-            
+
             Console.Write("Id do jogador: ");
             idPlayer = int.Parse(Console.ReadLine());
 
@@ -391,7 +395,7 @@ class Program
 
             // Verificar nível
             int i = Array.FindIndex(games, x => x.GetId() == idGame);
-            
+
             if (nivel < 0 || nivel > games[i].GetNiveis()) 
             {
                 throw new Exception($"o jogo informado não possui o nível {nivel}");
