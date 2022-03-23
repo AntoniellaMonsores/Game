@@ -16,9 +16,10 @@ class Arquivo<T> {
   public void Salvar (string arquivo, T obj){
     XmlSerializer xml = new XmlSerializer(typeof(T));
     StreamWriter sw = new StreamWriter(arquivo, false, Encoding.Default);
-    
+    xml.Serialize(sw, obj);
+    sw.Close();
   }
-
+}
     /* Passar para outro arquivo
 
     try
