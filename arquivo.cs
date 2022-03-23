@@ -6,9 +6,10 @@ using System.Collections.Generic;
 
 class Arquivo<T> {
   XmlSerializer xml = new XmlSerializer(typeof(T));
-  StreamReader sw = new StreamReader(arquivo, Encoding.Default);
-  T obj = (T) xml.Deserialize(sw);
-  sw.Close();
+  StreamReader sr = new StreamReader(arquivo, Encoding.Default);
+  T obj = (T) xml.Deserialize(sr);
+  sr.Close();
+  return obj; 
 }
 
     /* Passar para outro arquivo
