@@ -5,12 +5,15 @@ using System.Xml.Serialization;
 using System.Collections.Generic;
 
 class Arquivo<T> {
+  public T abrir (string arquivo) {
   XmlSerializer xml = new XmlSerializer(typeof(T));
   StreamReader sr = new StreamReader(arquivo, Encoding.Default);
   T obj = (T) xml.Deserialize(sr);
   sr.Close();
   return obj; 
-}
+  }
+  
+  public void Salvar (string arquivo, T obj)
 
     /* Passar para outro arquivo
 
