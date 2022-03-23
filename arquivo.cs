@@ -13,7 +13,11 @@ class Arquivo<T> {
   return obj; 
   }
   
-  public void Salvar (string arquivo, T obj)
+  public void Salvar (string arquivo, T obj){
+    XmlSerializer xml = new XmlSerializer(typeof(T));
+    StreamWriter sw = new StreamWriter(arquivo, false, Encoding.Default);
+    
+  }
 
     /* Passar para outro arquivo
 
