@@ -19,7 +19,7 @@ class Game {
     }
     
     public void SetId(int id) {
-        if this.id = id;
+        this.id = id;
     }
     
     public void SetNome(string nome) {
@@ -31,7 +31,7 @@ class Game {
     }
     
     public void SetNiveis(int niveis) {
-        if this.niveis = niveis;
+        this.niveis = niveis;
     }
     
     public int GetId() { 

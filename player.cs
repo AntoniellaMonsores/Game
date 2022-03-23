@@ -21,11 +21,11 @@ class Player : IComparable {
     }
     
     public void SetId(int id) {
-        if this.id = id;
+        this.id = id;
     }
     
     public void SetIdade(int idade) {
-        if this.idade = idade;
+        this.idade = idade;
     }
 
     public void SetApelido(string apelido) {

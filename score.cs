@@ -21,19 +21,19 @@ class Score : IComparable {
     }
     
     public void SetNivel(int nivel) {
-        if this.nivel = nivel;
+        this.nivel = nivel;
     }
     
     public void SetGameId(int idGame) {
-        if this.idGame = idGame;
+        this.idGame = idGame;
     }
     
     public void SetPlayerId(int idPlayer) {
-        if this.idPlayer = idPlayer;
+        this.idPlayer = idPlayer;
     }
 
     public void SetPontos(double pontos) {
-        if this.pontos = pontos;
+        this.pontos = pontos;
     }
 
     public void SetData(DateTime data) {
