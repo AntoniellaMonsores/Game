@@ -27,6 +27,14 @@ class Program
         // Determinação dos "serviços" a serem prestados
 
         Thread.CurrentThread.CurrentCulture = new CultureInfo("pt-BR");
+
+        // Leitura de arquivos
+        try Sistema.ArquivosAbrir();
+        
+        catch (Exception erro) 
+        {
+            Console.WriteLine($"\nErro: {erro.Message}");
+        }
         
         int func;
 
@@ -79,6 +87,14 @@ class Program
         }
 
         while (func != 0);
+
+        // Fechamento de arquivos
+        try Sistema.ArquivosSalvar();
+    
+        catch (Exception erro) 
+        {
+            Console.WriteLine(erro.Message);
+        }
     }
 
     public static int MenuInicial()
@@ -113,12 +129,11 @@ class Program
             if (Array.IndexOf(op, func) == -1) throw new ArgumentOutOfRangeException(); 
             else return func;
         }
-
+        
         catch
         {
-            Console.WriteLine("\nErro: opção inválida");
+            Console.WriteLine($"\nErro: opção inválida");
             CharRepeat();
-
             return -1;
         }
     }
@@ -153,7 +168,7 @@ class Program
 
             catch
             {
-                Console.WriteLine("\nErro: opção inválida");
+                Console.WriteLine($"\nErro: opção inválida");
                 CharRepeat();
             }
         }
@@ -191,7 +206,7 @@ class Program
 
             catch
             {
-                Console.WriteLine("\nErro: opção inválida");
+                Console.WriteLine($"\nErro: opção inválida");
                 CharRepeat();
             }
         }
@@ -233,7 +248,7 @@ class Program
 
             catch
             {
-                Console.WriteLine("\nErro: opção inválida");
+                Console.WriteLine($"\nErro: opção inválida");
                 CharRepeat();
             }
         }
@@ -269,8 +284,9 @@ class Program
             nome = Console.ReadLine();
 
             // Procurar nome no sistema
-            int checar = Array.FindIndex(games, x => x.GetNome() == nome);
-            if (checar != -1) throw new Exception("jogo já cadastrado");
+            // Comparação com valores em "lower case" - apenas letras minúsculas
+            int checarNome = Array.FindIndex(games, x => x.GetNome().ToLower() == nome.ToLower());
+            if (checarNome != -1) throw new Exception("jogo já cadastrado");
 
             Console.Write("Gênero: ");
             genero = Console.ReadLine();
@@ -295,9 +311,9 @@ class Program
             CadastrarGame();
         }
 
-        catch (Exception e)
+        catch (Exception erro)
         {
-            Console.WriteLine($"\nErro: {e.Message}");
+            Console.WriteLine($"\nErro: {erro.Message}");
             CharRepeat();
         }
     }
@@ -349,9 +365,9 @@ class Program
             CadastrarGame();
         }
 
-        catch (Exception e)
+        catch (Exception erro)
         {
-            Console.WriteLine($"\nErro: {e.Message}");
+            Console.WriteLine($"\nErro: {erro.Message}");
             CharRepeat();
         }
     }
@@ -418,9 +434,9 @@ class Program
             CadastrarScore();
         }
 
-        catch (Exception e)
+        catch (Exception erro)
         {
-            Console.WriteLine($"\nErro: {e.Message}");
+            Console.WriteLine($"\nErro: {erro.Message}");
             CharRepeat();
         }
     }
@@ -474,9 +490,9 @@ class Program
             CadastrarScore();
         }
 
-        catch (Exception e)
+        catch (Exception erro)
         {
-            Console.WriteLine($"\nErro: {e.Message}");
+            Console.WriteLine($"\nErro: {erro.Message}");
             CharRepeat();
         } 
     }
@@ -534,9 +550,9 @@ class Program
             CadastrarScore();
         }
 
-        catch (Exception e)
+        catch (Exception erro)
         {
-            Console.WriteLine($"\nErro: {e.Message}");
+            Console.WriteLine($"\nErro: {erro.Message}");
             CharRepeat();
         } 
     }
@@ -589,10 +605,10 @@ class Program
             CadastrarScore();
         }
 
-        catch (Exception e)
+        catch (Exception erro)
         {
             // Checar se há algum outro erro - até então desconhecido
-            Console.WriteLine($"\nErro: {e.Message}");
+            Console.WriteLine($"\nErro: {erro.Message}");
             CharRepeat();
         }
     }
@@ -632,9 +648,9 @@ class Program
             CadastrarScore();
         }
 
-        catch (Exception e)
+        catch (Exception erro)
         {
-            Console.WriteLine($"\nErro: {e.Message}");
+            Console.WriteLine($"\nErro: {erro.Message}");
             CharRepeat();
         } 
     }
@@ -672,9 +688,9 @@ class Program
             CadastrarScore();
         }
 
-        catch (Exception e)
+        catch (Exception erro)
         {
-            Console.WriteLine($"\nErro: {e.Message}");
+            Console.WriteLine($"\nErro: {erro.Message}");
             CharRepeat();
         } 
     }
@@ -710,9 +726,9 @@ class Program
             ExcluirScore();
         }
 
-        catch (Exception e)
+        catch (Exception erro)
         {
-            Console.WriteLine($"\nErro: {e.Message}");
+            Console.WriteLine($"\nErro: {erro.Message}");
             CharRepeat();
         }
     }
@@ -824,9 +840,9 @@ class Program
             ListarScore();
         }
 
-        catch (Exception e)
+        catch (Exception erro)
         {
-            Console.WriteLine($"\nErro: {e.Message}");
+            Console.WriteLine($"\nErro: {erro.Message}");
             CharRepeat();
         }
 

@@ -3,6 +3,20 @@
 <ArrayOfGames xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <Game>
         <SetId>1253</SetId>
-        <SetNome>abc</SetNome>
+        <SetNiveis>12</SetNiveis>
+        <SetNome>a</SetNome>
+        <SetGenero>ação</SetGenero>
+    </Game>
+    <Game>
+        <SetId>087</SetId>
+        <SetNiveis>09</SetNiveis>
+        <SetNome>b</SetNome>
+        <SetGenero>aventura</SetGenero>
+    </Game>
+    <Game>
+        <SetId>087</SetId>
+        <SetNiveis>06</SetNiveis>
+        <SetNome>c</SetNome>
+        <SetGenero>aventura</SetGenero>
     </Game>
 </ArrayOfGames>

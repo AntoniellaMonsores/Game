@@ -8,6 +8,22 @@ class Sistema {
     private static List<Player> players = new List<Player>();
     private static List<Score> score = new List<Score>();
 
+    public static void ArquivoAbrir() {
+      Arquivo<Game[]> f1 = new Arquivo<Game[]>();
+      games = f1.Abrir("./games.xml");
+      nGames = games.Length;
+
+      Arquivo <List<Player>> f2 = new Arquivo<List<Player>>();
+      players = f2.Abrir ("./pets.xml");
+
+      Arquivo <List<Score>> f3 = new Arquivo<List<Score>>();
+      score = f3.Abrir ("./socre.xml");
+    }
+
+    public static void ArquivoSalvar() {
+      
+    }
+
     public static bool GameIn(int id)
     {
         // Verificar se um jogo está cadastrado

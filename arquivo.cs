@@ -22,6 +22,7 @@ class Arquivo<T> {
 }
     /* Passar para outro arquivo
 
+    // Acho que essa parte aqui fica em Abrir() - a gente pode dar outro nome
     try
     { 
         // Passa a tragetoria e o nome do arquivo para o construtor StreamWriter
@@ -51,7 +52,8 @@ class Arquivo<T> {
     {
         Console.WriteLine("executando o ultimo");
     }
-      
+
+    // E a partir daqui em Salvar()
     try
     {
         StreamWriter sw = new StreamWriter("teste.txt");
