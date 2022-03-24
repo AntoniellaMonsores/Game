@@ -77,6 +77,6 @@ public class Game {
     
     public override string ToString() 
     {
-        return $"{id:000000} - {nome} - {genero} - Níveis: {niveis:00}";
+        return $"Id: {id:000000} - Nome: {nome} - Gênero: {genero} - Níveis: {niveis:00}";
     }
 }

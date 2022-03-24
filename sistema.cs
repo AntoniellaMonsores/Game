@@ -8,25 +8,35 @@ class Sistema {
     private static List<Player> players = new List<Player>();
     private static List<Score> score = new List<Score>();
 
-    public static void ArquivosAbrir() {
-      Arquivo<Game[]> f1 = new Arquivo<Game[]>();
-      games = f1.Abrir("arquivos/games.xml");
-      nGames = games.Length;
+    public static void ArquivosAbrir() 
+    {
+        // Determinação dos arquivos a serem usados
+        // Uso da classe "Arquivo"
+        
+        Arquivo<Game[]> f1 = new Arquivo<Game[]>();
+        games = f1.Abrir("arquivos/games.xml");
+        nGames = games.Length;
 
-      Arquivo <List<Player>> f2 = new Arquivo<List<Player>>();
-      players = f2.Abrir ("arquivos/players.xml");
+        Arquivo <List<Player>> f2 = new Arquivo<List<Player>>();
+        players = f2.Abrir("arquivos/players.xml");
 
-      Arquivo <List<Score>> f3 = new Arquivo<List<Score>>();
-      score = f3.Abrir ("arquivos/score.xml");
+        Arquivo <List<Score>> f3 = new Arquivo<List<Score>>();
+        score = f3.Abrir("arquivos/score.xml");
     }
 
-    public static void ArquivosSalvar() {
-      Arquivo<Game[]> f1 = new Arquivo<Game[]>();
-      f1.Salvar("arquivos/games.xml", GameListar());
-      Arquivo <List<Player>> f2 = new Arquivo<List<Player>>();
-      f2.Salvar("arquivos/players.xml", players);
-      Arquivo <List<Score>> f3 = new Arquivo<List<Score>>();
-      f3.Salvar("arquivos/score.xml", score);
+    public static void ArquivosSalvar() 
+    {
+        // Determinação dos arquivos a serem salvos
+        // Uso da classe "Arquivo"
+        
+        Arquivo<Game[]> f1 = new Arquivo<Game[]>();
+        f1.Salvar("arquivos/games.xml", GameListar());
+        
+        Arquivo <List<Player>> f2 = new Arquivo<List<Player>>();
+        f2.Salvar("arquivos/players.xml", players);
+        
+        Arquivo <List<Score>> f3 = new Arquivo<List<Score>>();
+        f3.Salvar("arquivos/score.xml", score);
     }
 
     public static bool GameIn(int id)

@@ -93,11 +93,11 @@ public class Player : IComparable {
 
     public int CompareTo(object obj) 
     {
-        return id.CompareTo(((Player)obj).id);
+        return apelido.CompareTo(((Player)obj).apelido);
     }
 
     public override string ToString() 
     {
-        return $"{id:000000} - {apelido} - {email}";
+        return $"Id: {id:000000} - User: {apelido} - Email: {email}";
     }
 }

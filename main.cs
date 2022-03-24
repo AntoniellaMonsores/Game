@@ -18,7 +18,7 @@ class Program
     {
         // Chamada do método "CharRepeat(int n)" com valor fixo de "n"
 
-        Console.WriteLine($"\n{CharRepeat(46)}");
+        Console.WriteLine($"\n{CharRepeat(54)}");
     }
 
     public static void Main()
@@ -41,7 +41,7 @@ class Program
         
         int func;
 
-        Console.WriteLine($"{CharRepeat(20)} Game {CharRepeat(20)}");
+        Console.WriteLine($"{CharRepeat(24)} Game {CharRepeat(24)}");
 
         do
         {
@@ -273,7 +273,7 @@ class Program
         string genero;
 
         Console.WriteLine();
-        Console.WriteLine($"{CharRepeat(16)} Dados do Jogo {CharRepeat(15)}");
+        Console.WriteLine($"{CharRepeat(20)} Dados do Jogo {CharRepeat(19)}");
         Console.WriteLine();
 
         try 
@@ -336,7 +336,7 @@ class Program
         string apelido;
 
         Console.WriteLine();
-        Console.WriteLine($"{CharRepeat(14)} Dados do Jogador {CharRepeat(14)}");
+        Console.WriteLine($"{CharRepeat(18)} Dados do Jogador {CharRepeat(18)}");
         Console.WriteLine();
 
         try 
@@ -393,7 +393,7 @@ class Program
 
         MenuScore();
         Console.WriteLine();
-        Console.WriteLine($"{CharRepeat(13)} Dados da pontuação {CharRepeat(13)}");
+        Console.WriteLine($"{CharRepeat(17)} Dados da pontuação {CharRepeat(17)}");
         Console.WriteLine();
 
         try 
@@ -820,18 +820,18 @@ class Program
             CharRepeat();
             Console.WriteLine();
     
-            /*if (score.Count == 0)
+            if (score.Count == 0)
             {
                 Console.WriteLine("não há pontuações cadastradas");
             }
     
             else 
-            {*/
+            {
                 for (int i = 0; i < score.Count; i++)
                 {
-                    Console.WriteLine($"{i:000000} - {score[i]}");
+                    Console.WriteLine($"{i:00} - {score[i]}");
                 }
-            //}
+            }
     
             CharRepeat(); 
     

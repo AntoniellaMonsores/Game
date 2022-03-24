@@ -4,22 +4,27 @@ using System.Text;
 using System.Xml.Serialization;
 using System.Collections.Generic;
 
-class Arquivo<T> {
-  public T Abrir (string arquivo) {
-  XmlSerializer xml = new XmlSerializer(typeof(T));
-  StreamReader sr = new StreamReader(arquivo, Encoding.Default);
-  T obj = (T) xml.Deserialize(sr);
-  sr.Close();
-  return obj; 
-  }
+class Arquivo<T> 
+{
+    public T Abrir (string arquivo) 
+    {
+        XmlSerializer xml = new XmlSerializer(typeof(T));
+        StreamReader sr = new StreamReader(arquivo, Encoding.Default);
+        T obj = (T) xml.Deserialize(sr);
+        sr.Close();
+
+        return obj; 
+    }
   
-  public void Salvar (string arquivo, T obj){
-    XmlSerializer xml = new XmlSerializer(typeof(T));
-    StreamWriter sw = new StreamWriter(arquivo, false, Encoding.Default);
-    xml.Serialize(sw, obj);
-    sw.Close();
-  }
+    public void Salvar (string arquivo, T obj)
+    {
+        XmlSerializer xml = new XmlSerializer(typeof(T));
+        StreamWriter sw = new StreamWriter(arquivo, false, Encoding.Default);
+        xml.Serialize(sw, obj);
+        sw.Close();
+    }
 }
+
     /* Passar para outro arquivo
 
     // Acho que essa parte aqui fica em Abrir() - a gente pode dar outro nome

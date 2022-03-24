@@ -98,6 +98,6 @@ public class Score : IComparable {
 
     public override string ToString() 
     {
-        return $"{pontos:0.000} - {data:dd/MM/yyyy} - Nível: {nivel:00}";
+        return $"Pontuação: {pontos:0.000} - Data: {data:dd/MM/yyyy} - Nível: {nivel:00}";
     }
 }
