@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <ArrayOfPlayers xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <SetId>123</SetId>
-    private int id;
-    private int idade;
-    private string apelido;
-    private string nome;
-    private string email; 
+    <Player>
+        <SetId>123</SetId>
+        <SetIdade>22</SetIdade>
+        <SetApelido>chen</SetApelido>
+        <SetNome>archen</SetNome>
+        <SetEmail>chen@gmail.com</SetEmail>
+    </Player>
+    <Player>
+        <SetId>6</SetId>
+        <SetIdade>22</SetIdade>
+        <SetApelido>mia</SetApelido>
+        <SetNome>mia</SetNome>
+        <SetEmail>mia@gmail.com</SetEmail>
+    </Player>
 </ArrayOfPlayers>
