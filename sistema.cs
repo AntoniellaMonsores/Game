@@ -10,23 +10,23 @@ class Sistema {
 
     public static void ArquivoAbrir() {
       Arquivo<Game[]> f1 = new Arquivo<Game[]>();
-      games = f1.Abrir("./games.xml");
+      games = f1.Abrir("arquivos/games.xml");
       nGames = games.Length;
 
       Arquivo <List<Player>> f2 = new Arquivo<List<Player>>();
-      players = f2.Abrir ("./players.xml");
+      players = f2.Abrir ("arquivos/players.xml");
 
       Arquivo <List<Score>> f3 = new Arquivo<List<Score>>();
-      score = f3.Abrir ("./score.xml");
+      score = f3.Abrir ("arquivos/score.xml");
     }
 
     public static void ArquivoSalvar() {
       Arquivo<Game[]> f1 = new Arquivo<Game[]>();
-      f1.Salvar("./games.xml", GameListar());
+      f1.Salvar("arquivos/games.xml", GameListar());
       Arquivo <List<Player>> f2 = new Arquivo<List<Player>>();
-      f2.Salvar("./players.xml", players);
+      f2.Salvar("arquivos/players.xml", players);
       Arquivo <List<Score>> f3 = new Arquivo<List<Score>>();
-      f3.Salvar("./score.xml", score);
+      f3.Salvar("arquivos/score.xml", score);
       
     }
 

@@ -29,7 +29,10 @@ class Program
         Thread.CurrentThread.CurrentCulture = new CultureInfo("pt-BR");
 
         // Leitura de arquivos
-        try Sistema.ArquivosAbrir();
+        try 
+        { 
+            Sistema.ArquivosAbrir(); 
+        }
         
         catch (Exception erro) 
         {
@@ -89,7 +92,10 @@ class Program
         while (func != 0);
 
         // Fechamento de arquivos
-        try Sistema.ArquivosSalvar();
+        try 
+        {
+            Sistema.ArquivosSalvar();
+        }
     
         catch (Exception erro) 
         {
