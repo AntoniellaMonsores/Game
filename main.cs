@@ -464,6 +464,8 @@ class Program
         
         try 
         {
+            Game[] games = Sistema.GameListar();
+            
             Console.Write("Id do jogo: ");
             id = int.Parse(Console.ReadLine());
 
@@ -476,6 +478,13 @@ class Program
 
             Console.Write("Nome: ");
             nome = Console.ReadLine();
+
+            // Restrição ao nome
+            // É permitido a mudança de "A" para "a" - considerados iguais
+            // Não é permitido a mudança de "A" para "B" (ou "b") - caso já cadastrado
+            int checarNome = Array.FindIndex(games, x => x.GetNome().ToLower() == nome.ToLower());
+            if (checarNome != -1 && games[checarNome].GetId() != id) 
+                throw new Exception("jogo já cadastrado");
 
             Console.Write("Gênero: ");
             genero = Console.ReadLine();
