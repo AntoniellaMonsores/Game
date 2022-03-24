@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ArrayOfPlayers xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ArrayOfPlayer xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <Player>
-        <SetId>123</SetId>
-        <SetIdade>22</SetIdade>
-        <SetApelido>chen</SetApelido>
-        <SetNome>archen</SetNome>
-        <SetEmail>chen@gmail.com</SetEmail>
+        <Id>123</Id>
+        <Idade>22</Idade>
+        <Apelido>chen</Apelido>
+        <Nome>archen</Nome>
+        <Email>chen@gmail.com</Email>
     </Player>
     <Player>
-        <SetId>6</SetId>
-        <SetIdade>22</SetIdade>
-        <SetApelido>mia</SetApelido>
-        <SetNome>mia</SetNome>
-        <SetEmail>mia@gmail.com</SetEmail>
+        <Id>6</Id>
+        <Idade>22</Idade>
+        <Apelido>mia</Apelido>
+        <Nome>mia</Nome>
+        <Email>mia@gmail.com</Email>
     </Player>
-</ArrayOfPlayers>
+</ArrayOfPlayer>

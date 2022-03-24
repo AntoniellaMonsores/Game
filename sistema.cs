@@ -8,7 +8,7 @@ class Sistema {
     private static List<Player> players = new List<Player>();
     private static List<Score> score = new List<Score>();
 
-    public static void ArquivoAbrir() {
+    public static void ArquivosAbrir() {
       Arquivo<Game[]> f1 = new Arquivo<Game[]>();
       games = f1.Abrir("arquivos/games.xml");
       nGames = games.Length;
@@ -20,14 +20,13 @@ class Sistema {
       score = f3.Abrir ("arquivos/score.xml");
     }
 
-    public static void ArquivoSalvar() {
+    public static void ArquivosSalvar() {
       Arquivo<Game[]> f1 = new Arquivo<Game[]>();
       f1.Salvar("arquivos/games.xml", GameListar());
       Arquivo <List<Player>> f2 = new Arquivo<List<Player>>();
       f2.Salvar("arquivos/players.xml", players);
       Arquivo <List<Score>> f3 = new Arquivo<List<Score>>();
       f3.Salvar("arquivos/score.xml", score);
-      
     }
 
     public static bool GameIn(int id)

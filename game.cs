@@ -1,13 +1,38 @@
 using System;
 using System.Collections;
 
-class Game {
+public class Game {
 
     private int id;
     private int niveis;
     private string nome;
     private string genero;
+
+    public int Id 
+    { 
+        get => id; 
+        set => id = value; 
+    }
+
+    public int Niveis 
+    { 
+        get => niveis; 
+        set => niveis = value; 
+    }
     
+    public string Nome 
+    { 
+        get => nome; 
+        set => nome = value; 
+    }
+    
+    public string Genero 
+    { 
+        get => genero; 
+        set => genero = value; 
+    }
+
+    public Game() { }
     public Game(int id, string nome, string genero, int niveis)
     {
         // Construtor da classe

@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 
-class Player : IComparable {
+public class Player : IComparable {
 
     private int id;
     private int idade;
@@ -9,6 +9,37 @@ class Player : IComparable {
     private string nome;
     private string email;
 
+    public int Id 
+    { 
+        get => id; 
+        set => id = value; 
+    }
+
+    public int Idade 
+    { 
+        get => idade; 
+        set => idade = value; 
+    }
+
+    public string Apelido 
+    { 
+        get => apelido; 
+        set => apelido = value; 
+    }
+    
+    public string Nome 
+    { 
+        get => nome; 
+        set => nome = value; 
+    }
+    
+    public string Email 
+    { 
+        get => email; 
+        set => email = value; 
+    }
+    
+    public Player() { }
     public Player(int id, int idade, string apelido, string nome, string email)
     {
         // Construtor da classe

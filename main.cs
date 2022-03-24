@@ -819,18 +819,18 @@ class Program
             CharRepeat();
             Console.WriteLine();
     
-            if (score.Count == 0)
+            /*if (score.Count == 0)
             {
                 Console.WriteLine("não há pontuações cadastradas");
             }
     
             else 
-            {
+            {*/
                 for (int i = 0; i < score.Count; i++)
                 {
                     Console.WriteLine($"{i:000000} - {score[i]}");
                 }
-            }
+            //}
     
             CharRepeat(); 
     
@@ -853,6 +853,5 @@ class Program
         }
 
         return null;
-
     }
 }

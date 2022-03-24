@@ -2,24 +2,24 @@
 
 <ArrayOfScore xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <Score>
-        <SetNivel>4</SetNivel>
-        <SetIdGame>1523</SetIdGame>
-        <SetIdPlayer>123</SetPlayer>
-        <SetPontos>12.4</SetPontos>
-        <SetData>21/03/2022</SetData>
+        <Nivel>4</Nivel>
+        <IdGame>1253</IdGame>
+        <IdPlayer>123</IdPlayer>
+        <Pontos>12.4</Pontos>
+        <Data>2022-01-03T00:00:00</Data>
     </Score>
     <Score>
-        <SetNivel>4</SetNivel>
-        <SetIdGame>1523</SetIdGame>
-        <SetIdPlayer>123</SetPlayer>
-        <SetPontos>13.1</SetPontos>
-        <SetData>21/03/2022</SetData>
+        <Nivel>4</Nivel>
+        <IdGame>1253</IdGame>
+        <IdPlayer>123</IdPlayer>
+        <Pontos>13.1</Pontos>
+        <Data>2022-01-03T00:00:00</Data>
     </Score>
     <Score>
-        <SetNivel>5</SetNivel>
-        <SetIdGame>1523</SetIdGame>
-        <SetIdPlayer>123</SetPlayer>
-        <SetPontos>16.78</SetPontos>
-        <SetData>23/03/2022</SetData>
+        <Nivel>5</Nivel>
+        <IdGame>1253</IdGame>
+        <IdPlayer>123</IdPlayer>
+        <Pontos>16.78</Pontos>
+        <Data>2022-03-03T00:00:00</Data>
     </Score>
 </ArrayOfScore>

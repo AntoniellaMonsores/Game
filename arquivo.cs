@@ -1,11 +1,11 @@
-using System; 
+using System;
 using System.IO;
 using System.Text;
 using System.Xml.Serialization;
 using System.Collections.Generic;
 
 class Arquivo<T> {
-  public T abrir (string arquivo) {
+  public T Abrir (string arquivo) {
   XmlSerializer xml = new XmlSerializer(typeof(T));
   StreamReader sr = new StreamReader(arquivo, Encoding.Default);
   T obj = (T) xml.Deserialize(sr);
