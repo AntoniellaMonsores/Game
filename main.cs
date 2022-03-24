@@ -290,6 +290,7 @@ class Program
             nome = Console.ReadLine();
 
             // Procurar nome no sistema
+            // Considera-se "B" igual a "b"
             // Comparação com valores em "lower case" - apenas letras minúsculas
             int checarNome = Array.FindIndex(games, x => x.GetNome().ToLower() == nome.ToLower());
             if (checarNome != -1) throw new Exception("jogo já cadastrado");

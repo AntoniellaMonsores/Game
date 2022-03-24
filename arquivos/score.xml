@@ -3,22 +3,29 @@
 <ArrayOfScore xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <Score>
         <Nivel>4</Nivel>
-        <IdGame>1253</IdGame>
-        <IdPlayer>123</IdPlayer>
+        <IdGame>2001</IdGame>
+        <IdPlayer>0804</IdPlayer>
         <Pontos>12.4</Pontos>
         <Data>2022-01-03T00:00:00</Data>
     </Score>
     <Score>
         <Nivel>4</Nivel>
-        <IdGame>1253</IdGame>
-        <IdPlayer>123</IdPlayer>
+        <IdGame>2001</IdGame>
+        <IdPlayer>0804</IdPlayer>
         <Pontos>13.1</Pontos>
         <Data>2022-01-03T00:00:00</Data>
     </Score>
     <Score>
         <Nivel>5</Nivel>
-        <IdGame>1253</IdGame>
-        <IdPlayer>123</IdPlayer>
+        <IdGame>2001</IdGame>
+        <IdPlayer>0804</IdPlayer>
+        <Pontos>16.78</Pontos>
+        <Data>2022-03-03T00:00:00</Data>
+    </Score>
+    <Score>
+        <Nivel>5</Nivel>
+        <IdGame>2001</IdGame>
+        <IdPlayer>6</IdPlayer>
         <Pontos>16.78</Pontos>
         <Data>2022-03-03T00:00:00</Data>
     </Score>

@@ -2,7 +2,7 @@
 
 <ArrayOfPlayer xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <Player>
-        <Id>123</Id>
+        <Id>0804</Id>
         <Idade>22</Idade>
         <Apelido>chen</Apelido>
         <Nome>archen</Nome>
