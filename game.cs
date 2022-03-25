@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 
-public class Game {
+public class Game : IComparable {
 
     private int id;
     private int niveis;
@@ -73,6 +73,11 @@ public class Game {
     
     public int GetNiveis() { 
         return niveis; 
+    }
+
+    public int CompareTo(object obj) 
+    {
+        return nome.CompareTo(((Game)obj).nome);
     }
     
     public override string ToString() 

@@ -2,16 +2,16 @@
 
 <ArrayOfGame xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <Game>
-        <Id>2001</Id>
-        <Niveis>12</Niveis>
-        <Nome>A</Nome>
-        <Genero>ação    </Genero>
-    </Game>
-    <Game>
         <Id>087</Id>
         <Niveis>09</Niveis>
         <Nome>B</Nome>
         <Genero>aventura</Genero>
+    </Game>
+    <Game>
+        <Id>2001</Id>
+        <Niveis>12</Niveis>
+        <Nome>A</Nome>
+        <Genero>ação    </Genero>
     </Game>
     <Game>
         <Id>9</Id>

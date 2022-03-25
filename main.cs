@@ -292,7 +292,7 @@ class Program
             // Procurar nome no sistema
             // Considera-se "B" igual a "b"
             // Comparação com valores em "lower case" - apenas letras minúsculas
-            int checarNome = Array.FindIndex(games, x => x.GetNome().ToLower() == nome.ToLower());
+            int checarNome = Array.FindIndex(games, x => x.GetNome().ToLower().Trim() == nome.ToLower().Trim());
             if (checarNome != -1) throw new Exception("jogo já cadastrado");
 
             Console.Write("Gênero: ");
@@ -341,6 +341,8 @@ class Program
 
         try 
         {
+            List<Player> players = Sistema.PlayerListar();
+            
             Console.Write("Id: ");
             id = int.Parse(Console.ReadLine());
 
@@ -352,6 +354,9 @@ class Program
 
             Console.Write("Apelido: ");
             apelido = Console.ReadLine();
+
+            int checarUser = players.FindIndex(x => x.GetApelido().Trim() == apelido.Trim());
+            if (checarUser != -1) throw new Exception("este apelido já está em uso");
 
             Console.Write("Nome: ");
             nome = Console.ReadLine();
@@ -482,7 +487,7 @@ class Program
             // Restrição ao nome
             // É permitido a mudança de "A" para "a" - considerados iguais
             // Não é permitido a mudança de "A" para "B" (ou "b") - caso já cadastrado
-            int checarNome = Array.FindIndex(games, x => x.GetNome().ToLower() == nome.ToLower());
+            int checarNome = Array.FindIndex(games, x => x.GetNome().ToLower().Trim() == nome.ToLower().Trim());
             if (checarNome != -1 && games[checarNome].GetId() != id) 
                 throw new Exception("jogo já cadastrado");
 
@@ -528,6 +533,8 @@ class Program
 
         try 
         {
+            List<Player> players = Sistema.PlayerListar();
+            
             Console.WriteLine();
 
             Console.Write("Id do jogador: ");
@@ -545,6 +552,10 @@ class Program
 
             Console.Write("Apelido: ");
             apelido = Console.ReadLine();
+
+            int checarUser = players.FindIndex(x => x.GetApelido().Trim() == apelido.Trim());
+            if (checarUser != -1 && players[checarUser].GetId() != id) 
+                throw new Exception("este apelido já está em uso");
 
             Console.Write("Nome: ");
             nome = Console.ReadLine();

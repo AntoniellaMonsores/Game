@@ -135,6 +135,7 @@ class Sistema {
         
         Game[] aux = new Game[nGames];
         Array.Copy(games, aux, nGames);
+        Array.Sort(aux);
 
         return aux;
     }
