@@ -1,18 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
-
+﻿<?xml version="1.0" encoding="utf-8"?>
 <ArrayOfPlayer xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <Player>
-        <Id>6</Id>
-        <Idade>22</Idade>
-        <Apelido>mia </Apelido>
-        <Nome>mia</Nome>
-        <Email>mia@gmail.com</Email>
-    </Player>
-    <Player>
-        <Id>0804</Id>
-        <Idade>22</Idade>
-        <Apelido>chen</Apelido>
-        <Nome>archen</Nome>
-        <Email>chen@gmail.com</Email>
-    </Player>
+  <Player>
+    <Id>987</Id>
+    <Idade>25</Idade>
+    <Apelido>ana </Apelido>
+    <Nome>ana machado</Nome>
+    <Email>anamachado@gmail.com</Email>
+  </Player>
+  <Player>
+    <Id>804</Id>
+    <Idade>22</Idade>
+    <Apelido>chen</Apelido>
+    <Nome>archen</Nome>
+    <Email>chen@gmail.com</Email>
+  </Player>
+  <Player>
+    <Id>6</Id>
+    <Idade>22</Idade>
+    <Apelido>mia </Apelido>
+    <Nome>mia</Nome>
+    <Email>mia@gmail.com</Email>
+  </Player>
 </ArrayOfPlayer>

@@ -17,10 +17,10 @@ class Sistema {
         games = f1.Abrir("arquivos/games.xml");
         nGames = games.Length;
 
-        Arquivo <List<Player>> f2 = new Arquivo<List<Player>>();
+        Arquivo<List<Player>> f2 = new Arquivo<List<Player>>();
         players = f2.Abrir("arquivos/players.xml");
 
-        Arquivo <List<Score>> f3 = new Arquivo<List<Score>>();
+        Arquivo<List<Score>> f3 = new Arquivo<List<Score>>();
         score = f3.Abrir("arquivos/score.xml");
     }
 
@@ -46,7 +46,7 @@ class Sistema {
         try 
         {
             Game obj = new Game(id, "", "", 0);
-            GameListar(obj.GetId());
+            GameListar(obj.Id);
             return true;
         }
 
@@ -60,7 +60,7 @@ class Sistema {
         try 
         {
             Player obj = new Player(id, 0, "", "", "");
-            PlayerListar(obj.GetId());
+            PlayerListar(obj.Id);
             return true;
         }
 
@@ -103,9 +103,9 @@ class Sistema {
             
         if (aux != null)
         {
-            aux.SetNome(obj.GetNome());
-            aux.SetGenero(obj.GetGenero());
-            aux.SetNiveis(obj.GetNiveis());
+            aux.Nome = obj.Nome;
+            aux.Genero = obj.Genero;
+            aux.Niveis = obj.Niveis;
         }
     }
     
@@ -115,7 +115,7 @@ class Sistema {
         // Deslocamento dos elementos do array
         // Redefinição do tamanho do array
 
-        int ind = Array.IndexOf(games, GameListar(obj.GetId()));
+        int ind = Array.IndexOf(games, GameListar(obj.Id));
 
         for (int i = ind; i < nGames - 1; i++) 
         {
@@ -145,7 +145,7 @@ class Sistema {
         // Retorno de um elemento específico da lista de jogos
         // FindIndex : retorno do índice do elemento com parâmetro apresentado
         
-        int i = Array.FindIndex(games, obj => obj.GetId() == id);
+        int i = Array.FindIndex(games, obj => obj.Id == id);
 
         if (games[i] != null) return games[i];
 
@@ -164,14 +164,14 @@ class Sistema {
         // Atualização de dados referentes a um jogador
         // O id permanecerá o mesmo
 
-        Player aux = PlayerListar(obj.GetId());
+        Player aux = PlayerListar(obj.Id);
         
         if (aux != null)
         {
-            aux.SetNome(obj.GetNome());
-            aux.SetIdade(obj.GetIdade());
-            aux.SetEmail(obj.GetEmail());
-            aux.SetApelido(obj.GetApelido());
+            aux.Nome = obj.Nome;
+            aux.Idade = obj.Idade;
+            aux.Email = obj.Email;
+            aux.Apelido = obj.Apelido;
         }
     }
 
@@ -180,7 +180,7 @@ class Sistema {
         // Exclusão de um elemento da lista de jogadores
         // Exclusão feita a partir do índice do elemento
         
-        Player aux = PlayerListar(obj.GetId());
+        Player aux = PlayerListar(obj.Id);
         if (aux != null) players.Remove(aux);
     }
 
@@ -197,10 +197,9 @@ class Sistema {
         // Retorno de um elemento específico da lista de jogos
         // FindIndex : retorno do índice do elemento com parâmetro apresentado
         
-        int i = players.FindIndex(obj => obj.GetId() == id);
+        int i = players.FindIndex(obj => obj.Id == id);
 
         if (players[i] != null) return players[i];
-
         return null;
     }
 
@@ -216,15 +215,15 @@ class Sistema {
         // Atualização de informações referentes a uma pontuação
         // O método recebe o id (índice) do score e o objeto em si
  
-        Score aux = ScoreListar(obj.GetGameId(), obj.GetPlayerId())[id];
+        Score aux = ScoreListar(obj.IdGame, obj.IdPlayer)[id];
         
         if (aux != null) 
         {
-            aux.SetData(obj.GetData());
-            aux.SetNivel(obj.GetNivel());
-            aux.SetGameId(obj.GetGameId());
-            aux.SetPlayerId(obj.GetPlayerId());
-            aux.SetPontos(obj.GetPontos());
+            aux.Data = obj.Data;
+            aux.Nivel = obj.Nivel;
+            aux.IdGame = obj.IdGame;
+            aux.IdPlayer = obj.IdPlayer;
+            aux.Pontos = obj.Pontos;
         }
     }
 
@@ -233,8 +232,8 @@ class Sistema {
         // Exclusão de um elemento da lista de jogadores
         // Exclusão feita a partir do índice do elemento
         
-        int ind = score.IndexOf(obj);
-        if (score[ind] != null) score.RemoveAt(ind);
+        int i = score.IndexOf(obj);
+        if (score[i] != null) score.RemoveAt(i);
     }
 
     public static List<Score> ScoreListar(int idGame, int idPlayer)
@@ -247,7 +246,7 @@ class Sistema {
         
         foreach (Score obj in score)
         {
-            if (obj.GetGameId() == idGame && obj.GetPlayerId() == idPlayer) aux.Add(obj);
+            if (obj.IdGame == idGame && obj.IdPlayer == idPlayer) aux.Add(obj);
         }
         
         aux.Sort();

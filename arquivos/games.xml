@@ -1,22 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?>
-
+﻿<?xml version="1.0" encoding="utf-8"?>
 <ArrayOfGame xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <Game>
-        <Id>087</Id>
-        <Niveis>09</Niveis>
-        <Nome>B</Nome>
-        <Genero>aventura</Genero>
-    </Game>
-    <Game>
-        <Id>2001</Id>
-        <Niveis>12</Niveis>
-        <Nome>A</Nome>
-        <Genero>ação    </Genero>
-    </Game>
-    <Game>
-        <Id>9</Id>
-        <Niveis>06</Niveis>
-        <Nome>C</Nome>
-        <Genero>aventura</Genero>
-    </Game>
+  <Game>
+    <Id>2001</Id>
+    <Niveis>12</Niveis>
+    <Nome>A</Nome>
+    <Genero>ação    </Genero>
+  </Game>
+  <Game>
+    <Id>87</Id>
+    <Niveis>9</Niveis>
+    <Nome>B</Nome>
+    <Genero>aventura</Genero>
+  </Game>
+  <Game>
+    <Id>9</Id>
+    <Niveis>6</Niveis>
+    <Nome>C</Nome>
+    <Genero>aventura</Genero>
+  </Game>
+  <Game>
+    <Id>2</Id>
+    <Niveis>8</Niveis>
+    <Nome>D</Nome>
+    <Genero>ação    </Genero>
+  </Game>
 </ArrayOfGame>
