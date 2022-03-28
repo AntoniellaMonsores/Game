@@ -362,7 +362,8 @@ class Program
             nome = Console.ReadLine();
 
             Console.Write("Email: ");
-            email = Console.ReadLine();
+            email = Console.ReadLine().ToLower().Trim();
+            if (email.Contains(" ")) throw new Exception("o email não deve conter espaços em branco");
 
             Player obj = new Player(id, idade, apelido, nome, email);
             Sistema.PlayerInserir(obj);
@@ -561,7 +562,8 @@ class Program
             nome = Console.ReadLine();
 
             Console.Write("Email: ");
-            email = Console.ReadLine();
+            email = Console.ReadLine().ToLower().Trim();
+            if (email.Contains(" ")) throw new Exception("o email não deve conter espaços em branco");
 
             Player obj = new Player(id, idade, apelido, nome, email);
             Sistema.PlayerAtualizar(obj);
