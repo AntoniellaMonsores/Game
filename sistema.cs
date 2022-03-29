@@ -99,7 +99,7 @@ class Sistema {
         // Atualização de dados referentes a um jogo
         // O id permanecerá o mesmo
 
-        Game aux = GameListar(obj.GetId());
+        Game aux = GameListar(obj.Id);
             
         if (aux != null)
         {

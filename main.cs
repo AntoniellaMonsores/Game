@@ -16,8 +16,6 @@ class Program
 
     public static void CharRepeat()
     {
-        // Chamada do método "CharRepeat(int n)" com valor fixo de "n"
-
         Console.WriteLine($"\n{CharRepeat(54)}");
     }
 
@@ -86,6 +84,12 @@ class Program
                 case 12:
                     ListarScore();
                     break;
+                case 13:
+                    PesquisarGame();
+                    break;
+                case 14:
+                    PesquisarPlayer();
+                    break;
             }
         }
 
@@ -107,7 +111,7 @@ class Program
     {
         // Listagem de opções ao usuário
         
-        int[] op = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+        int[] op = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
         int func;
 
         Console.WriteLine();
@@ -126,6 +130,8 @@ class Program
         Console.WriteLine("10 - Visualizar jogos");
         Console.WriteLine("11 - Visualizar jogadores");
         Console.WriteLine("12 - Visualizar pontuações");
+        Console.WriteLine("13 - Pesquisar jogo");
+        Console.WriteLine("14 - Pesquisar jogador");
         Console.WriteLine();
 
         try 
@@ -155,7 +161,8 @@ class Program
         {
             Console.WriteLine();
             Console.WriteLine("00 - Lembrar jogos cadastrados");
-            Console.WriteLine("01 - Continuar");
+            Console.WriteLine("01 - Pesquisar jogo");
+            Console.WriteLine("02 - Continuar");
             Console.WriteLine();
 
             try
@@ -167,7 +174,10 @@ class Program
                     case 0:
                         ListarGame();
                         break;
-                    case 1: break;
+                    case 1: 
+                        PesquisarGame();
+                        break;
+                    case 2: break;
                     default: throw new ArgumentOutOfRangeException(); 
                 }
             }
@@ -179,7 +189,7 @@ class Program
             }
         }
 
-        while (func != 1);
+        while (func != 2);
     }
 
     public static void MenuPlayer()
@@ -193,7 +203,8 @@ class Program
         {
             Console.WriteLine();
             Console.WriteLine("00 - Lembrar jogadores cadastrados");
-            Console.WriteLine("01 - Continuar");
+            Console.WriteLine("01 - Pesquisar jogador");
+            Console.WriteLine("02 - Continuar");
             Console.WriteLine();
 
             try 
@@ -205,7 +216,10 @@ class Program
                     case 0:
                         ListarPlayer();
                         break;
-                    case 1: break;
+                    case 1: 
+                        PesquisarPlayer();
+                        break;
+                    case 2: break;
                     default: throw new ArgumentOutOfRangeException();
                 }
             }
@@ -217,7 +231,7 @@ class Program
             }
         }
 
-        while (func != 1);
+        while (func != 2);
     }
     
     public static void MenuScore()
@@ -287,16 +301,16 @@ class Program
             if (Sistema.GameIn(id)) throw new Exception("id já cadastrado");
 
             Console.Write("Nome: ");
-            nome = Console.ReadLine();
+            nome = Console.ReadLine().Trim();
 
             // Procurar nome no sistema
             // Considera-se "B" igual a "b"
             // Comparação com valores em "lower case" - apenas letras minúsculas
-            int checarNome = Array.FindIndex(games, x => x.GetNome().ToLower().Trim() == nome.ToLower().Trim());
+            int checarNome = Array.FindIndex(games, x => x.Nome.ToLower() == nome.ToLower());
             if (checarNome != -1) throw new Exception("jogo já cadastrado");
 
             Console.Write("Gênero: ");
-            genero = Console.ReadLine();
+            genero = Console.ReadLine().Trim();
 
             Console.Write("Qtd. de níveis: ");
             niveis = int.Parse(Console.ReadLine());
@@ -310,7 +324,6 @@ class Program
 
         catch (FormatException)
         {
-            // São considerados erros de digitação dados que não correspondem ao tipo da variável
             // Considera-se que o usuário reconhecerá o erro sem maiores informações
             // O usuário retorna ao menu de cadastro
 
@@ -353,10 +366,14 @@ class Program
             idade = int.Parse(Console.ReadLine());
 
             Console.Write("Apelido: ");
-            apelido = Console.ReadLine();
+            apelido = Console.ReadLine().Replace(" ", "");
 
-            int checarUser = players.FindIndex(x => x.GetApelido().Trim() == apelido.Trim());
+            // Procurar apelido no sistema
+            int checarUser = players.FindIndex(x => x.Apelido == apelido);
             if (checarUser != -1) throw new Exception("este apelido já está em uso");
+            
+            // O apelido não deve conter espaços em branco
+            if (apelido.Contains(" ")) throw new Exception("o apelido não deve conter espaços em branco");
 
             Console.Write("Nome: ");
             nome = Console.ReadLine();
@@ -423,12 +440,10 @@ class Program
             nivel = int.Parse(Console.ReadLine());
 
             // Verificar nível
-            int i = Array.FindIndex(games, x => x.GetId() == idGame);
-
-            if (nivel < 0 || nivel > games[i].GetNiveis()) 
-            {
+            int i = Array.FindIndex(games, x => x.Id == idGame);
+            
+            if (nivel < 0 || nivel > games[i].Niveis) 
                 throw new Exception($"o jogo informado não possui o nível {nivel}");
-            }
 
             Console.Write("Pontuação: ");
             pontos = double.Parse(Console.ReadLine());
@@ -483,17 +498,15 @@ class Program
             Console.WriteLine();
 
             Console.Write("Nome: ");
-            nome = Console.ReadLine();
+            nome = Console.ReadLine().Trim();
 
-            // Restrição ao nome
-            // É permitido a mudança de "A" para "a" - considerados iguais
-            // Não é permitido a mudança de "A" para "B" (ou "b") - caso já cadastrado
-            int checarNome = Array.FindIndex(games, x => x.GetNome().ToLower().Trim() == nome.ToLower().Trim());
-            if (checarNome != -1 && games[checarNome].GetId() != id) 
-                throw new Exception("jogo já cadastrado");
+            // É permitido a atribuição do mesmo nome
+            // Não é permitido a atribuição de um nome cadastrado em outro id
+            int checarNome = Array.FindIndex(games, x => x.Nome.ToLower() == nome.ToLower());
+            if (checarNome != -1 && games[checarNome].Id != id) throw new Exception("jogo já cadastrado");
 
             Console.Write("Gênero: ");
-            genero = Console.ReadLine();
+            genero = Console.ReadLine().Trim();
 
             Console.Write("Qtd. de níveis: ");
             niveis = int.Parse(Console.ReadLine());
@@ -552,14 +565,18 @@ class Program
             idade = int.Parse(Console.ReadLine());
 
             Console.Write("Apelido: ");
-            apelido = Console.ReadLine();
+            apelido = Console.ReadLine().Trim();
 
-            int checarUser = players.FindIndex(x => x.GetApelido().Trim() == apelido.Trim());
-            if (checarUser != -1 && players[checarUser].GetId() != id) 
-                throw new Exception("este apelido já está em uso");
+            // O usuário pode usar o mesmo apelido
+            // O usuário não deve utilizar um apelido já usado por outro usuário
+            int checarUser = players.FindIndex(x => x.Apelido == apelido);
+            if (checarUser != -1 && players[checarUser].Id != id) throw new Exception("este apelido já está em uso");
+            
+            // O apelido não deve conter espaços em branco
+            if (apelido.Contains(" ")) throw new Exception("o apelido não deve conter espaços em branco");
 
             Console.Write("Nome: ");
-            nome = Console.ReadLine();
+            nome = Console.ReadLine().Trim();
 
             Console.Write("Email: ");
             email = Console.ReadLine().ToLower().Trim();
@@ -636,7 +653,6 @@ class Program
 
         catch (Exception erro)
         {
-            // Checar se há algum outro erro - até então desconhecido
             Console.WriteLine($"\nErro: {erro.Message}");
             CharRepeat();
         }
@@ -726,7 +742,6 @@ class Program
 
     public static void ExcluirScore()
     {
-        // Faz uso da classe ListarScore()
         // Resulta na exclusão do score informado
 
         int id;
@@ -794,9 +809,8 @@ class Program
         List<Player> users = Sistema.PlayerListar();
 
         CharRepeat();
-        
         Console.WriteLine();
-
+        
         if (users.Count == 0)
         {
             Console.WriteLine("não há jogadores cadastrados");
@@ -815,7 +829,7 @@ class Program
 
     public static int[] ListarScore()
     {
-        // Listagem das pontuações associados a um jogo e jogador específicos
+        // Listagem de todas as pontuações associados a um jogo e jogador informados
 
         int idGame;
         int idPlayer;
@@ -851,7 +865,7 @@ class Program
             {
                 for (int i = 0; i < score.Count; i++)
                 {
-                    Console.WriteLine($"{i:00} - {score[i]}");
+                    Console.WriteLine($"Id: {i:000} - {score[i]}");
                 }
             }
     
@@ -876,5 +890,175 @@ class Program
         }
 
         return null;
+    }
+
+    public static void PesquisarGame()
+    {
+        // Procura de um jogo específico a partir de seu id ou nome
+
+        int func;
+
+        Console.WriteLine();
+        Console.WriteLine("00 - Pesquisar pelo id");
+        Console.WriteLine("01 - Pesquisar pelo nome");
+        Console.WriteLine();
+
+        try 
+        {
+            Game[] games = Sistema.GameListar();
+
+            func = int.Parse(Console.ReadLine());
+
+            if (func == 0)
+            {
+                int id;
+
+                CharRepeat();
+                Console.WriteLine();
+                Console.Write("Id do jogo: ");
+                id = int.Parse(Console.ReadLine());
+
+                int checarId = Array.FindIndex(games, x => x.Id == id);
+
+                if (checarId == -1)
+                {
+                    Console.WriteLine("\nid não cadastrado");
+                    CharRepeat();
+                }
+
+                else 
+                {
+                    Console.WriteLine();
+                    Console.WriteLine(games[checarId]);
+                    CharRepeat();
+                }
+            }
+
+            else if (func == 1)
+            {
+                string nome;
+
+                CharRepeat();
+                Console.WriteLine();
+                Console.Write("Nome do jogo: ");
+                nome = Console.ReadLine().ToLower().Replace(" ", "");
+
+                int checarNome = Array.FindIndex(games, x => x.Nome.ToLower().Replace(" ", "") == nome);
+
+                if (checarNome == -1) 
+                {
+                    Console.WriteLine("\nnome não cadastrado");
+                    CharRepeat();
+                }
+
+                else 
+                {
+                    Console.WriteLine();
+                    Console.WriteLine(games[checarNome]);
+                    CharRepeat();
+                }
+            }
+
+            else throw new Exception("opção inválida");
+        }
+
+        catch (FormatException)
+        {
+            Console.WriteLine("\nErro: valor inválido");
+            CharRepeat();
+            CadastrarScore();
+        }
+
+        catch (Exception erro)
+        {
+            Console.WriteLine($"\nErro: {erro.Message}");
+            CharRepeat();
+        } 
+    }
+
+    public static void PesquisarPlayer()
+    {
+        // Pesquisa de um jogador específico a partir de seu id ou apelido
+
+        int func;
+
+        Console.WriteLine();
+        Console.WriteLine("00 - Pesquisar pelo id");
+        Console.WriteLine("01 - Pesquisar pelo apelido");
+        Console.WriteLine();
+
+        try 
+        {
+            List<Player> players = Sistema.PlayerListar();
+
+            func = int.Parse(Console.ReadLine());
+
+            if (func == 0)
+            {
+                int id;
+
+                CharRepeat();
+                Console.WriteLine();
+                
+                Console.Write("Id do jogador: ");
+                id = int.Parse(Console.ReadLine());
+
+                int checarId = players.FindIndex(x => x.Id == id);
+
+                if (checarId == -1)
+                {
+                    Console.WriteLine("\nid não cadastrado");
+                    CharRepeat();
+                }
+
+                else 
+                {
+                    Console.WriteLine();
+                    Console.WriteLine(players[checarId]);
+                    CharRepeat();
+                }
+            }
+
+            else if (func == 1)
+            {
+                string apelido;
+
+                CharRepeat();
+                Console.WriteLine();
+
+                Console.Write("Apelido do jogador: ");
+                apelido = Console.ReadLine().ToLower().Replace(" ", "");
+
+                int checarApelido = players.FindIndex(x => x.Apelido.ToLower() == apelido);
+
+                if (checarApelido == -1) 
+                {
+                    Console.WriteLine("\napelido não cadastrado");
+                    CharRepeat();
+                }
+
+                else 
+                {
+                    Console.WriteLine();
+                    Console.WriteLine(players[checarApelido]);
+                    CharRepeat();
+                }
+            }
+
+            else throw new Exception("opção inválida");
+        }
+
+        catch (FormatException)
+        {
+            Console.WriteLine("\nErro: valor inválido");
+            CharRepeat();
+            CadastrarScore();
+        }
+
+        catch (Exception erro)
+        {
+            Console.WriteLine($"\nErro: {erro.Message}");
+            CharRepeat();
+        } 
     }
 }

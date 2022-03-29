@@ -4,7 +4,7 @@
     <Id>2001</Id>
     <Niveis>12</Niveis>
     <Nome>A</Nome>
-    <Genero>ação    </Genero>
+    <Genero>ação</Genero>
   </Game>
   <Game>
     <Id>87</Id>
@@ -22,6 +22,12 @@
     <Id>2</Id>
     <Niveis>8</Niveis>
     <Nome>D</Nome>
-    <Genero>ação    </Genero>
+    <Genero>ação</Genero>
+  </Game>
+  <Game>
+    <Id>3</Id>
+    <Niveis>10</Niveis>
+    <Nome>F</Nome>
+    <Genero>tiro</Genero>
   </Game>
 </ArrayOfGame>

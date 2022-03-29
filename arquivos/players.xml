@@ -3,22 +3,29 @@
   <Player>
     <Id>987</Id>
     <Idade>25</Idade>
-    <Apelido>ana </Apelido>
-    <Nome>ana machado</Nome>
+    <Apelido>ana</Apelido>
+    <Nome>Ana Machado</Nome>
     <Email>anamachado@gmail.com</Email>
   </Player>
   <Player>
     <Id>804</Id>
     <Idade>22</Idade>
     <Apelido>chen</Apelido>
-    <Nome>archen</Nome>
+    <Nome>Archen</Nome>
     <Email>chen@gmail.com</Email>
   </Player>
   <Player>
     <Id>6</Id>
     <Idade>22</Idade>
-    <Apelido>mia </Apelido>
-    <Nome>mia</Nome>
+    <Apelido>mia</Apelido>
+    <Nome>Mia</Nome>
     <Email>mia@gmail.com</Email>
+  </Player>
+  <Player>
+    <Id>1</Id>
+    <Idade>22</Idade>
+    <Apelido>RYM_Us</Apelido>
+    <Nome>Us</Nome>
+    <Email>rym.us@gmail.com</Email>
   </Player>
 </ArrayOfPlayer>

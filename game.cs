@@ -33,48 +33,15 @@ public class Game : IComparable {
     }
 
     public Game() { }
+    
     public Game(int id, string nome, string genero, int niveis)
     {
-        // Construtor da classe
-
         this.id = id;
         this.nome = nome;
         this.genero = genero;
         this.niveis = niveis;
     }
-    
-    public void SetId(int id) {
-        this.id = id;
-    }
-    
-    public void SetNome(string nome) {
-        this.nome = nome;
-    }
-
-    public void SetGenero(string genero) {
-        this.genero = genero;
-    }
-    
-    public void SetNiveis(int niveis) {
-        this.niveis = niveis;
-    }
-    
-    public int GetId() { 
-        return id; 
-    }
-    
-    public string GetNome() { 
-        return nome; 
-    }
-
-    public string GetGenero() { 
-        return genero; 
-    }
-    
-    public int GetNiveis() { 
-        return niveis; 
-    }
-
+ 
     public int CompareTo(object obj) 
     {
         return nome.CompareTo(((Game)obj).nome);
@@ -82,6 +49,6 @@ public class Game : IComparable {
     
     public override string ToString() 
     {
-        return $"Id: {id:000000} - Nome: {nome} - Gênero: {genero} - Níveis: {niveis:00}";
+        return $"Id: {id, -5:00000} - Nome: {nome, -1} - Gênero: {genero, -8} - Níveis: {niveis:00}";
     }
 }
